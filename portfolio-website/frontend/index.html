@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="./css/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/input.css">
+</head>
+
+<body class="p-0 m-0 overflow-hidden">
+    <div class="font-win95font">
+        <div class="bg-[#017D7D] w-screen h-screen">
+            <div class="flex flex-col m-2 min-h-screen  w-16 text-sm text-white items-center justify-start">
+                <div class="item flex flex-col  w-full h-20 items-center">
+                    <img src="assets/pdficon.png" class="icon">
+                    <p class="text-xs">Resume</p>
+                </div>
+                <div class="items flex flex-col  w-full h-20 items-center">
+                    <img src="assets/projects-icon.png" class="icon h-3/5 w-4/5">
+                    <p class="text-xs">Projects</p>
+                </div>
+                <div class="items flex flex-col  w-full h-20 items-center">
+                    <img src="assets/contact.png" class="icon">
+                    <p class="text-xs">Contact Me</p>
+                </div>
+                <div class="items flex flex-col  w-full h-20 items-center">
+                    <img src="assets/gallery.png" class="icon">
+                    <p class="text-xs">Gallery</p>
+                </div>
+                <div class="items flex flex-col  w-full h-20 items-center">
+                    <img src="assets/achievements-icon.png" class="icon">
+                    <p class="text-xs">Achievements</p>
+                </div>
+            </div>
+        </div>
+        <div class="bg-[#BEBEBE] w-screen fixed bottom-0 h-10 border-t-4 [border-top-color:#CAF5F0] flex justify-center items-center">
+            <div class="fixed left-1 hover:cursor-pointer" onclick="startToggle()"><img id="start-image" src="assets/start-button.gif" class="w-20 h-8"></div>
+
+            <!-- start menu  -->
+            <div id="start-menu" class="bottom-9 fixed left-1 h-72 w-48 border-2 border-white bg-[#BEBEBE] hidden">
+                <img src="assets/start-windows-95.png" class="w-8 h-full">
+                <div id="start-toolbar" class="flex flex-grow flex-col text-sm">
+                    <div class="flex items-center hover:bg-[#000081] hover:text-white hover:cursor-pointer"><img src="assets/contact.png" class="h-12 w-12">Programs<span class="ml-auto text-xs">&#9654;</span></div>
+                    <div class="flex items-center hover:bg-[#000081] hover:text-white hover:cursor-pointer"><img src="assets/games.png " class="h-12 w-12 ">Games<span class="ml-auto text-xs">&#9654;</span></div>
+                    <div class="flex items-center hover:bg-[#000081] hover:text-white hover:cursor-pointer"><img src="assets/contact.png" class="h-12 w-12">Tools<span class="ml-auto text-xs">&#9654;</span></div>
+                    <div class="flex items-center hover:bg-[#000081] hover:text-white hover:cursor-pointer"><img src="assets/drawings.png " class="h-12 w-12 ">Drawings</div>
+                    <hr>
+                    <div class="flex items-center hover:bg-[#000081] hover:text-white hover:cursor-pointer"><img src="assets/linkedin.png" class="h-12 w-11">LinkedIn</div>
+                    <div class="flex items-center hover:bg-[#000081] hover:text-white hover:cursor-pointer"><img src="assets/github.png " class="h-12 w-12 ">Github</div>
+                </div>
+            </div>
+            <div class="text-black fixed flex justify-center items-center right-1 hover:cursor-pointer border-gray-500 border-2 w-20 h-8 " id="time-div "></div>
+        </div>
+    </div>
+</body>
+<script src="js/javascript.js "></script>
+
+</html>
