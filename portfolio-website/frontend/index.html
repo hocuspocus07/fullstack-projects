@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Portfolio Website</title>
     <link href="./css/output.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/input.css">
 </head>
@@ -42,13 +42,36 @@
             <div id="start-menu" class="bottom-9 fixed left-1 h-72 w-48 border-2 border-white bg-[#BEBEBE] hidden">
                 <img src="assets/start-windows-95.png" class="w-8 h-full">
                 <div id="start-toolbar" class="flex flex-grow flex-col text-sm">
-                    <div class="flex items-center hover:bg-[#000081] hover:text-white hover:cursor-pointer"><img src="assets/contact.png" class="h-12 w-12">Programs<span class="ml-auto text-xs">&#9654;</span></div>
-                    <div class="flex items-center hover:bg-[#000081] hover:text-white hover:cursor-pointer"><img src="assets/games.png " class="h-12 w-12 ">Games<span class="ml-auto text-xs">&#9654;</span></div>
+                    <div id="games" class="flex items-center hover:bg-[#000081] hover:text-white hover:cursor-pointer"><img src="assets/games.png " class="h-12 w-12 ">Games<span class="ml-auto text-xs">&#9654;</span></div>
+                    <div id="games-menu" class="hidden fixed flex-grow bottom-30 m-1 left-48 bg-[#BEBEBE] flex-col w-32 h-40 border-2 border-white">
+                        <div class="w-full flex items-center py-1 hover:bg-[#000081] hover:text-white hover:cursor-pointer">
+                            <img src="assets/minesweeper.png" class="w-8 h-8 pr-4">
+                            <span>MineSweeper</span>
+                        </div>
+                        <div class="w-full flex items-center py-1 hover:bg-[#000081] hover:text-white hover:cursor-pointer">
+                            <img src="assets/tictactoe.png" class="w-10 h-10 pr-4">
+                            <span>TicTacToe</span>
+                        </div>
+                        <div class="w-full flex items-center py-1 hover:bg-[#000081] hover:text-white hover:cursor-pointer">
+                            <img src="assets/watersort.png" class="w-10 h-10 pr-4">
+                            <span>WaterSort</span>
+                        </div>
+                    </div>
+
                     <div class="flex items-center hover:bg-[#000081] hover:text-white hover:cursor-pointer"><img src="assets/contact.png" class="h-12 w-12">Tools<span class="ml-auto text-xs">&#9654;</span></div>
                     <div class="flex items-center hover:bg-[#000081] hover:text-white hover:cursor-pointer"><img src="assets/drawings.png " class="h-12 w-12 ">Drawings</div>
                     <hr>
-                    <div class="flex items-center hover:bg-[#000081] hover:text-white hover:cursor-pointer"><img src="assets/linkedin.png" class="h-12 w-11">LinkedIn</div>
-                    <div class="flex items-center hover:bg-[#000081] hover:text-white hover:cursor-pointer"><img src="assets/github.png " class="h-12 w-12 ">Github</div>
+                    <a href="https://in.linkedin.com/in/sajjadhasnain">
+                        <div class="flex items-center hover:bg-[#000081] hover:text-white hover:cursor-pointer">
+                            <img src="assets/linkedin.png" class="h-12 w-11">LinkedIn
+                        </div>
+                    </a>
+                    <a href="https://github.com/hocuspocus07">
+                        <div class="flex items-center hover:bg-[#000081] hover:text-white hover:cursor-pointer"><img src="assets/github.png " class="h-12 w-12 ">Github</div>
+                    </a>
+                    <a href="https://play.picoctf.org/users/hocuspocus1">
+                        <div class="flex items-center hover:bg-[#000081] hover:text-white hover:cursor-pointer p-2"><img src="assets/picoctf.png" class="h-8 w-8 mx-2 ">PicoCTF</div>
+                    </a>
                 </div>
             </div>
             <div class="text-black fixed flex justify-center items-center right-1 hover:cursor-pointer border-gray-500 border-2 w-20 h-8 " id="time-div "></div>

@@ -18,9 +18,32 @@ const timeSetter = () => {
 }
 setInterval(timeSetter, 1000);
 
+// games menu and children elements 
+
+const games = document.getElementById('games');
+const gamesmenu = document.getElementById('games-menu');
+
+function showMenu() {
+    gamesmenu.classList.remove('hidden');
+    gamesmenu.classList.add('flex');
+}
+
+// Function to hide the games menu
+function hideMenu() {
+    gamesmenu.classList.add('hidden');
+    gamesmenu.classList.remove('flex');
+}
+
+games.addEventListener('mouseenter', showMenu);
+gamesmenu.addEventListener('mouseenter', showMenu);
+
+games.addEventListener('mouseleave', hideMenu);
+gamesmenu.addEventListener('mouseleave', hideMenu);
+
+
 const startToggle = () => {
     const startmenu = document.getElementById('start-menu');
-    const startimage = document.getElementById('start-image')
+    const startimage = document.getElementById('start-image');
     startimage.src = "./assets/win-clicked.jpg";
     startmenu.classList.toggle("hidden");
     if (!startmenu.classList.contains('hidden')) {
