@@ -7,6 +7,7 @@
     <title>Portfolio Website</title>
     <link href="./css/output.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/input.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.0/themes/base/jquery-ui.css">
 </head>
 
 <body class="p-0 m-0 overflow-hidden">
@@ -35,7 +36,7 @@
                 </div>
             </div>
         </div>
-        <div class="bg-[#BEBEBE] w-screen fixed bottom-0 h-10 border-t-4 [border-top-color:#CAF5F0] flex" id="bottom-bar">
+        <div class="bg-[#BEBEBE] w-screen fixed bottom-0 h-10 border-t-4 [border-top-color:#CAF5F0] flex z-50" id="bottom-bar">
             <div class="fixed left-1 hover:cursor-pointer" onclick="startToggle()"><img id="start-image" src="assets/start-button.gif" class="w-20 h-8 mr-10"></div>
 
             <!-- start menu  -->
@@ -60,7 +61,7 @@
 
                     <!-- multipurpose window -->
 
-                    <div id="multip-window" class="hidden top-1/4 left-1/3 fixed w-1/3 h-96 flex-col bg-[#BEC7C9] p-1">
+                    <div id="multip-window" class="hidden top-1/4 left-1/3 fixed w-1/3 h-96 flex-col bg-[#BEC7C9] p-1 overflow-auto resize z-50">
                         <div id="controls" class="w-full h-6 bg-[#0000A9] flex justify-between p-1">
                             <div class="w-28 h-full left-0 flex">
                                 <img src="" class="left-0 h-4 w-4 pr-1 z-10" id="program-icon">
@@ -68,7 +69,7 @@
                             </div>
                             <div class="right-0 h-full flex p-0 m-0">
                                 <img src="assets/minimise.png" class="h-full w-6" id="minimise-iframe" onclick="operateIframe('minimise')">
-                                <img src="assets/maximise.png" class="h-full w-6" id="maximise-iframe" onclick="operateIframe('minimise')">
+                                <img src="assets/maximise.png" class="h-full w-6" id="maximise-iframe" onclick="operateIframe('maximise')">
                                 <img src="assets/close.png" class="h-full w-6" id="close-iframe" onclick="closeWindow(event)">
                             </div>
                         </div>
@@ -104,7 +105,11 @@
             <div class="text-black fixed flex justify-center items-center right-1 hover:cursor-pointer border-gray-500 border-2 w-20 h-8 " id="time-div"></div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.0/jquery-ui.js"></script>
+    <script src="js/javascript.js"></script>
+    <script src="js/movablewindow.js"></script>
+
 </body>
-<script src="js/javascript.js"></script>
 
 </html>

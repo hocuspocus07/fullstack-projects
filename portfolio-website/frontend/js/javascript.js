@@ -42,26 +42,21 @@ gamesmenu.addEventListener('mouseenter', showGameMenu);
 games.addEventListener('mouseleave', hideGameMenu);
 gamesmenu.addEventListener('mouseleave', hideGameMenu);
 
-//function to play games
-// Initialize tab counter
+//function to run programs
 
 function runProgram(program) {
     tabCount++;
-
-    // Clone and prepare the new tab
     const newTab = openedtab.cloneNode(true);
     newTab.classList.remove('hidden');
     newTab.classList.add('flex', `tab-${tabCount}`);
     newTab.querySelector('.tab-content').textContent = program;
     newTab.querySelector('#tab-icon').src = `./assets/${program.toLowerCase()}.png`;
 
-    // Close button event to remove tab
     const closeButton = newTab.querySelector('span');
     closeButton.addEventListener('click', () => newTab.remove());
 
     document.getElementById('tab-container').appendChild(newTab);
 
-    // Ensure multipurpose window appears right away
     const multipWindow = document.getElementById('multip-window');
     multipWindow.classList.remove('hidden');
     multipWindow.classList.add('flex', 'z-20');
@@ -71,7 +66,6 @@ function runProgram(program) {
     const iframe = document.getElementById('window-iframe');
     iframe.src = "";
 
-    // Set iframe source for specific programs
     if (program === "MineSweeper") {
         iframe.src = "https://hocuspocus07.github.io/Minesweeper/";
     } else if (program === "WaterSort") {
@@ -81,19 +75,26 @@ function runProgram(program) {
     }
 }
 
+let isMaximized = false;
+
 function operateIframe(operation) {
     const multipWindow = document.getElementById('multip-window');
+
     if (operation === "minimise") {
-        multipWindow.classList.add('hidden'); // Hide window on minimize
+        multipWindow.classList.add('hidden');
+        isMaximized = false;
     } else if (operation === "maximise") {
-        multipWindow.classList.toggle("top-1/4", "left-1/3", "w-1/3", "h-96");
-        if (!multipWindow.classList.contains("top-1/4")) {
-            multipWindow.classList.add("top-0", "left-0", "h-full", "w-full", "z-10");
+        if (!isMaximized) {
+            multipWindow.classList.add("maximized");
+            multipWindow.classList.remove("top-1/4", "left-1/3", "w-1/3", "h-96");
         } else {
-            multipWindow.classList.remove("top-0", "left-0", "h-full", "w-full", "z-10");
+            multipWindow.classList.remove("maximized");
+            multipWindow.classList.add("top-1/4", "left-1/3", "w-1/3", "h-96");
         }
+        isMaximized = !isMaximized;
     }
 }
+
 
 
 function toggleTab(event) {
