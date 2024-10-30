@@ -11,32 +11,15 @@ const contactSchema = new Schema({
         match: [/^\S+@\S+\.\S+$/, 'Please enter a valid email address'],
     },
     phone: {
-        type: [Number, 'please enter a valid number'],
+        type: String,
         required: false,
     },
     message: {
-        type: [String, 'Message cannot be empty'],
+        type: String,
         required: true,
-    },
-    subject: {
-        type: String,
-        required: false,
-    },
-    date: {
-        type: Date,
-        default: Date.now,
-    },
-    status: {
-        type: String,
-        enum: ["new", "replied", ],
-        default: "new",
     },
     company: {
         type: String,
-        required: false,
-    },
-    attachments: {
-        type: [String],
         required: false,
     },
 }, { timestamps: true });

@@ -8,23 +8,37 @@ const getContact = async(req, res) => {
 };
 
 const addContact = async(req, res) => {
-    const { name, email, phone, message, subject, date, status, company, attachments } = req.body;
-    console.log(req.body);
-    const newContact = new Contact({
-        name,
-        email,
-        phone,
-        message,
-        subject,
-        date,
-        status,
-        company,
-        attachments,
-    });
-    await newContact.save();
-    res.json(newContact);
-    console.log(`contact added: ${newContact}`);
+    try {
+        const { name, email, phone, message, company } = req.body;
+        console.log(req.body); // Log incoming request body
+
+        const newContact = new Contact({
+            name,
+            email,
+            phone,
+            message,
+            company,
+        });
+
+        await newContact.save();
+
+        res.status(201).json({
+            success: true,
+            message: "Contact added successfully!",
+            contact: newContact,
+        });
+        console.log(`Contact added: ${newContact}`);
+    } catch (error) {
+        console.error("Error adding contact:", error);
+
+        res.status(500).json({
+            success: false,
+            message: "Error adding contact: " + error.message,
+        });
+    }
 };
+
+
 
 const deleteContact = async(req, res) => {
     const contact = await Contact.findById(req.params.id);
