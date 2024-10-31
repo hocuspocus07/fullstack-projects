@@ -9,40 +9,42 @@
     <link rel="stylesheet" href="../css/input.css">
 </head>
 
-<body>
-    <div class="h-screen w-screen justify-center items-center flex bg-black overflow-hidden font-win95font">
-        <div class="flex h-4/5 w-1/2">
-            <div class="bg-[#BEBEBE] p-2 h-full w-2/3">
-                <nav class="bg-[#0000A9]">
+<body class="bg-black">
+    <div class="xs:m-6 lg:m-0 h-screen w-screen lg:justify-center lg:items-center flex xs:overflow-auto overflow-hidden font-win95font">
+        <div class="xs:w-full xs:space-y-4 flex h-4/5 w-1/2 xs:flex-col">
+            <div class="bg-[#BEBEBE] p-2 xs:w-screen w-2/3 border-black border-2">
+                <nav class="bg-[#0000A9] border-2 border-black">
                     <h1 class="ml-2 text-2xl text-white">Contact Me</h1>
                 </nav>
                 <div class="flex flex-col mt-2 ml-5">
                     <form id="contactForm">
                         <div class="flex items-center relative w-full text-xl py-3">
                             <span class="float-left">Name:</span>
-                            <input name="name" class="h-7 w-56 text-base px-2 border-black border-2 right-10 absolute" type="text" required>
+                            <input name="name" class="h-7 xs:w-40 w-56 text-base px-2 border-black border-2 right-10 absolute" type="text" required>
                         </div>
                         <div class="flex items-center relative w-full text-xl py-3">
                             <span class="float-left">Email:</span>
-                            <input name="email" class="h-7 w-56 text-base px-2 border-black border-2 right-10 absolute" type="email" required>
+                            <input name="email" class="h-7 w-56 xs:w-40 text-base px-2 border-black border-2 right-10 absolute" type="email" required>
                         </div>
                         <div class="flex items-center relative w-full text-xl py-3">
                             <span class="float-left">Phone:</span>
-                            <input name="phone" class="h-7 w-56 text-base px-2 border-black border-2 right-10 absolute" type="text">
+                            <input name="phone" class="h-7 xs:w-40 w-56 text-base px-2 border-black border-2 right-10 absolute" type="text">
                         </div>
                         <div class="flex items-center relative w-full text-xl py-3">
                             <span class="float-left">Company(if any):</span>
-                            <input name="company" class="h-7 w-56 text-base px-2 border-black border-2 right-10 absolute" type="text">
+                            <input name="company" class="h-7 xs:w-40 w-56 text-base px-2 border-black border-2 right-10 absolute" type="text">
                         </div>
                         <div class="flex items-center relative w-full text-xl py-3">
                             <span class="float-left">Message:</span>
-                            <textarea name="message" class="w-56 py-2 text-base px-2 border-black border-2 h-60 ml-32" required></textarea>
+                            <textarea name="message" class="w-56 xs:w-40 xs:h-40 xs:ml-24 py-2 text-base px-2 border-black border-2 h-60 ml-32" required></textarea>
                         </div>
                         <button type="submit" class="border-2 w-20 border-black bg-[#D6D6D6]">Submit</button>
                     </form>
                 </div>
             </div>
-            <div class="p-3 bg-white w-1/3">
+            <div class="p-3 bg-white w-1/3 xs:w-full border-black border-2 flex justify-center items-center flex-col">
+                <span>Feel free to reach out with any questions, collaboration ideas, or just to say hello! I'm always excited to connect and explore new opportunities</span>
+                <img src="../assets/contactus.png" class="h-64 w-full">
             </div>
         </div>
     </div>

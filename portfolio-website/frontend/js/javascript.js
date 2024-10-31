@@ -2,6 +2,8 @@ let tabCount = 0;
 const openedtab = document.getElementById('tab-opened');
 const timeSetter = () => {
     const date = new Date();
+    const hoverTime = date.toLocaleString();
+    document.getElementById('hover-time').innerText = hoverTime;
     let hours = String(date.getHours()).padStart(2, '0');
     const minutes = String(date.getMinutes()).padStart(2, '0');
     let timeString = "";
@@ -24,6 +26,14 @@ setInterval(timeSetter, 1000);
 
 const games = document.getElementById('games');
 const gamesmenu = document.getElementById('games-menu');
+const timediv = document.getElementById('time-div');
+const hovertime = document.getElementById('hover-time');
+timediv.addEventListener('mouseenter', () => {
+    hovertime.classList.remove('hidden');
+});
+timediv.addEventListener('mouseleave', () => {
+    hovertime.classList.add('hidden');
+});
 
 function showGameMenu() {
     gamesmenu.classList.remove('hidden');
@@ -36,6 +46,7 @@ function hideGameMenu() {
     gamesmenu.classList.remove('flex');
 }
 
+
 games.addEventListener('mouseenter', showGameMenu);
 gamesmenu.addEventListener('mouseenter', showGameMenu);
 
@@ -45,6 +56,10 @@ gamesmenu.addEventListener('mouseleave', hideGameMenu);
 //function to run programs
 
 function runProgram(program) {
+    const startmenu = document.getElementById('start-menu');
+    startmenu.classList.add("hidden");
+    const startimage = document.getElementById('start-image');
+    startimage.src = "./assets/start-button.gif";
     tabCount++;
     const newTab = openedtab.cloneNode(true);
     newTab.classList.remove('hidden');
@@ -60,9 +75,10 @@ function runProgram(program) {
     const multipWindow = document.getElementById('multip-window');
     multipWindow.classList.remove('hidden');
     multipWindow.classList.add('flex', 'z-20');
-    document.getElementById('program-icon').src = `./assets/${program.toLowerCase()}.png`;
-    document.getElementById('program-name').textContent = program;
-
+    if (`./assets/${program.toLowerCase()}.png`) {
+        document.getElementById('program-icon').src = `./assets/${program.toLowerCase()}.png`;
+        document.getElementById('program-name').textContent = program;
+    }
     const iframe = document.getElementById('window-iframe');
     iframe.src = "";
 
@@ -72,6 +88,15 @@ function runProgram(program) {
         iframe.src = "https://hocuspocus07.github.io/WaterSortGame/";
     } else if (program === "Resume") {
         iframe.src = "./assets/resume.pdf";
+        document.getElementById('program-icon').src = './assets/pdficon.png';
+    } else if (program === "Contact Me") {
+        iframe.src = "./components/contact.html";
+        document.getElementById('program-icon').src = './assets/contact.png';
+    } else if (program === "Techstack") {
+        iframe.src = "./components/techstack.html";
+    } else if (program === "Date/Time Properties") {
+        iframe.src = "./components/datentime.html";
+        document.getElementById('program-icon').src = './assets/clock.png';
     }
 }
 

@@ -12,25 +12,41 @@
 
 <body class="p-0 m-0 overflow-hidden">
     <div class="font-win95font">
+        <!-- multipurpose window -->
+
+        <div id="multip-window" class="hidden top-1/4 left-1/3 fixed w-1/3 h-96 flex-col bg-[#BEC7C9] p-1 overflow-auto resize z-50">
+            <div id="controls" class="w-full h-6 bg-[#0000A9] flex justify-between p-1">
+                <div class="w-28 h-full left-0 flex">
+                    <img src="" class="left-0 h-4 w-4 pr-1 z-10" id="program-icon">
+                    <p class="text-white" id="program-name"></p>
+                </div>
+                <div class="right-0 h-full flex p-0 m-0">
+                    <img src="assets/minimise.png" class="h-full w-6" id="minimise-iframe" onclick="operateIframe('minimise')">
+                    <img src="assets/maximise.png" class="h-full w-6" id="maximise-iframe" onclick="operateIframe('maximise')">
+                    <img src="assets/close.png" class="h-full w-6" id="close-iframe" onclick="closeWindow(event)">
+                </div>
+            </div>
+            <iframe id="window-iframe" class="w-full h-full"></iframe>
+        </div>
         <div class="bg-[#017D7D] w-screen h-screen">
             <div class="flex flex-col m-2 min-h-screen  w-16 text-sm text-white items-center justify-start">
-                <div class="item flex flex-col  w-full h-20 items-center" onclick="runProgram('Resume')">
+                <div class="item flex flex-col  w-full h-20 items-center hover:cursor-pointer" onclick="runProgram('Resume')">
                     <img src="assets/pdficon.png" class="icon">
                     <p class="text-xs">Resume</p>
                 </div>
-                <div class="items flex flex-col  w-full h-20 items-center">
+                <div class="items flex flex-col  w-full h-20 items-center hover:cursor-pointer">
                     <img src="assets/projects-icon.png" class="icon h-3/5 w-4/5">
                     <p class="text-xs">Projects</p>
                 </div>
-                <div class="items flex flex-col  w-full h-20 items-center">
+                <div class="items flex flex-col  w-full h-20 items-center hover:cursor-pointer" onclick="runProgram('Contact Me')">
                     <img src="assets/contact.png" class="icon">
                     <p class="text-xs">Contact Me</p>
                 </div>
-                <div class="items flex flex-col  w-full h-20 items-center">
-                    <img src="assets/gallery.png" class="icon">
-                    <p class="text-xs">Gallery</p>
+                <div class="items flex flex-col  w-full h-20 items-center hover:cursor-pointer" onclick="runProgram('Techstack')">
+                    <img src="assets/techstack.png" class="icon">
+                    <p class="text-xs">TechStack</p>
                 </div>
-                <div class="items flex flex-col  w-full h-20 items-center">
+                <div class="items flex flex-col  w-full h-20 items-center hover:cursor-pointer">
                     <img src="assets/achievements-icon.png" class="icon">
                     <p class="text-xs">Achievements</p>
                 </div>
@@ -59,23 +75,6 @@
                         </div>
                     </div>
 
-                    <!-- multipurpose window -->
-
-                    <div id="multip-window" class="hidden top-1/4 left-1/3 fixed w-1/3 h-96 flex-col bg-[#BEC7C9] p-1 overflow-auto resize z-50">
-                        <div id="controls" class="w-full h-6 bg-[#0000A9] flex justify-between p-1">
-                            <div class="w-28 h-full left-0 flex">
-                                <img src="" class="left-0 h-4 w-4 pr-1 z-10" id="program-icon">
-                                <p class="text-white" id="program-name"></p>
-                            </div>
-                            <div class="right-0 h-full flex p-0 m-0">
-                                <img src="assets/minimise.png" class="h-full w-6" id="minimise-iframe" onclick="operateIframe('minimise')">
-                                <img src="assets/maximise.png" class="h-full w-6" id="maximise-iframe" onclick="operateIframe('maximise')">
-                                <img src="assets/close.png" class="h-full w-6" id="close-iframe" onclick="closeWindow(event)">
-                            </div>
-                        </div>
-                        <iframe id="window-iframe" class="w-full h-full"></iframe>
-                    </div>
-
                     <div class="flex items-center hover:bg-[#000081] hover:text-white hover:cursor-pointer"><img src="assets/contact.png" class="h-12 w-12">Tools<span class="ml-auto text-xs">&#9654;</span></div>
                     <div class="flex items-center hover:bg-[#000081] hover:text-white hover:cursor-pointer"><img src="assets/drawings.png " class="h-12 w-12 ">Drawings</div>
                     <hr>
@@ -84,10 +83,10 @@
                             <img src="assets/linkedin.png" class="h-12 w-11">LinkedIn
                         </div>
                     </a>
-                    <a href="https://github.com/hocuspocus07">
+                    <a href="https://github.com/hocuspocus07" target="_blank">
                         <div class="flex items-center hover:bg-[#000081] hover:text-white hover:cursor-pointer"><img src="assets/github.png " class="h-12 w-12 ">Github</div>
                     </a>
-                    <a href="https://play.picoctf.org/users/hocuspocus1">
+                    <a href="https://play.picoctf.org/users/hocuspocus1" target="_blank">
                         <div class="flex items-center hover:bg-[#000081] hover:text-white hover:cursor-pointer p-2"><img src="assets/picoctf.png" class="h-8 w-8 mx-2 ">PicoCTF</div>
                     </a>
                 </div>
@@ -102,7 +101,8 @@
                     <span class="right-0 ml-12 bg-gray-600 h-6 w-6"><img src="assets/close.png"></span>
                 </div>
             </div>
-            <div class="text-black fixed flex justify-center items-center right-1 hover:cursor-pointer border-gray-500 border-2 w-20 h-8 " id="time-div"></div>
+            <div class="text-black fixed flex justify-center items-center right-1 hover:cursor-pointer border-gray-500 border-2 w-20 h-8 " id="time-div" onclick="runProgram('Date/Time Properties')"></div>
+            <div class="bg-[#BEBEBE] border-2 border-black fixed right-0 bottom-8 h-auto w-auto text-lg px-1 hidden" id="hover-time"></div>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
