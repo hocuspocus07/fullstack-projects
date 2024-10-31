@@ -70,32 +70,27 @@ function updateClock() {
 const clock = document.getElementById("clock");
 
 function addHours() {
-    const clockDiameter = clock.offsetWidth; // Clock's diameter in pixels
+    const clockDiameter = clock.offsetWidth;
     const clockRadius = clockDiameter / 2;
-    const remSize = clockDiameter / 16; // Calculate 1rem as a factor of the clock diameter
-    const markerRadius = clockRadius / remSize - 0.5; // Adjust marker radius to bring markers slightly inward
+    const remSize = clockDiameter / 16;
+    const markerRadius = clockRadius / remSize - 0.5;
 
     for (let i = 0; i < 12; i++) {
         const marker = document.createElement("div");
         marker.className = "absolute bg-[#54A8A9] border-2 border-white";
 
-        // Set the size of the markers in rem
         marker.style.width = "0.5rem";
         marker.style.height = "0.5rem";
         marker.style.borderRadius = "2px";
 
-        // Calculate the angle in radians
         const angle = (i * 30) * (Math.PI / 180);
 
-        // Calculate top and left in rem units, adjusting by half marker size to center
-        const x = (markerRadius * Math.cos(angle)) - 0.25; // -0.25 for centering horizontally
-        const y = (markerRadius * Math.sin(angle)) - 0.25; // -0.25 for centering vertically
+        const x = (markerRadius * Math.cos(angle)) - 0.25;
+        const y = (markerRadius * Math.sin(angle)) - 0.25;
 
-        // Apply the calculated positions in rem
         marker.style.left = `calc(50% + ${x}rem)`;
         marker.style.top = `calc(50% + ${y}rem)`;
 
-        // Append marker to clock
         clock.appendChild(marker);
     }
 }
