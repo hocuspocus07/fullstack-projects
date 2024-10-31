@@ -26,6 +26,27 @@ setInterval(timeSetter, 1000);
 
 const games = document.getElementById('games');
 const gamesmenu = document.getElementById('games-menu');
+
+const tools = document.getElementById('tools');
+const toolsmenu = document.getElementById('tools-menu');
+
+function showToolMenu() {
+    toolsmenu.classList.remove('hidden');
+    toolsmenu.classList.add('flex');
+}
+
+// Function to hide the tools menu
+function hideToolMenu() {
+    toolsmenu.classList.add('hidden');
+    toolsmenu.classList.remove('flex');
+}
+
+tools.addEventListener('mouseenter', showToolMenu);
+toolsmenu.addEventListener('mouseenter', showToolMenu);
+
+tools.addEventListener('mouseleave', hideToolMenu);
+toolsmenu.addEventListener('mouseleave', hideToolMenu);
+
 const timediv = document.getElementById('time-div');
 const hovertime = document.getElementById('hover-time');
 timediv.addEventListener('mouseenter', () => {
@@ -56,19 +77,24 @@ gamesmenu.addEventListener('mouseleave', hideGameMenu);
 //function to run programs
 
 function runProgram(program) {
+    const tabContainer = document.getElementById('tab-container');
     const startmenu = document.getElementById('start-menu');
     startmenu.classList.add("hidden");
     const startimage = document.getElementById('start-image');
     startimage.src = "./assets/start-button.gif";
     tabCount++;
     const newTab = openedtab.cloneNode(true);
+    const tabId = `tab-${program.toLowerCase()}`;
+    newTab.id = tabId;
     newTab.classList.remove('hidden');
     newTab.classList.add('flex', `tab-${tabCount}`);
     newTab.querySelector('.tab-content').textContent = program;
     newTab.querySelector('#tab-icon').src = `./assets/${program.toLowerCase()}.png`;
-
-    const closeButton = newTab.querySelector('span');
-    closeButton.addEventListener('click', () => newTab.remove());
+    tabContainer.appendChild(newTab);
+    const closeButton = document.getElementById('close-iframe');
+    closeButton.onclick = function() {
+        closeWindow(tabId);
+    };
 
     document.getElementById('tab-container').appendChild(newTab);
 
@@ -141,25 +167,25 @@ function toggleTab(event) {
     }
 }
 
-function closeWindow() {
+function closeWindow(tabId) {
+    console.log("Attempting to close tab with ID:", tabId); // Log tabId
     const window = document.getElementById('multip-window');
 
     // Close the multipurpose window
     window.classList.remove('flex');
     window.classList.add('hidden');
 
-    const tabIconSrc = document.getElementById('program-icon').src;
-    const tabContainer = document.getElementById('tab-container');
+    const tab = document.getElementById(tabId);
+    console.log("Tab found:", tab); // Log the found tab
 
-    const tabs = tabContainer.querySelectorAll('.tabs');
-
-    tabs.forEach(tab => {
-        const tabIcon = tab.querySelector('#tab-icon');
-        if (tabIcon && tabIcon.src === tabIconSrc) {
-            tab.remove();
-        }
-    });
+    if (tab) {
+        console.log(true);
+        tab.remove();
+    } else {
+        console.log("No tab found with that ID."); // Log if tab is not found
+    }
 }
+
 
 function startToggle() {
     const startmenu = document.getElementById('start-menu');

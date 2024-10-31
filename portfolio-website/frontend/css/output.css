@@ -672,6 +672,14 @@ video {
   top: 50%;
 }
 
+.bottom-24 {
+  bottom: 6rem;
+}
+
+.bottom-28 {
+  bottom: 7rem;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -771,10 +779,6 @@ video {
 
 .h-16 {
   height: 4rem;
-}
-
-.h-2\/3 {
-  height: 66.666667%;
 }
 
 .h-20 {
@@ -1111,6 +1115,10 @@ video {
   padding: 0.75rem;
 }
 
+.p-4 {
+  padding: 1rem;
+}
+
 .px-1 {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
@@ -1264,6 +1272,10 @@ video {
     justify-content: center;
   }
 
+  .lg\:p-2 {
+    padding: 0.5rem;
+  }
+
   .lg\:py-2 {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
@@ -1297,10 +1309,6 @@ video {
 
   .xs\:h-full {
     height: 100%;
-  }
-
-  .xs\:h-screen {
-    height: 100vh;
   }
 
   .xs\:w-4\/5 {
@@ -1344,40 +1352,16 @@ video {
 }
 
 @media (min-width: 801px) and (max-width: 1024px) {
-  .cs\:mt-44 {
-    margin-top: 11rem;
+  .cs\:mb-3 {
+    margin-bottom: 0.75rem;
   }
 
   .cs\:mt-4 {
     margin-top: 1rem;
   }
 
-  .cs\:mb-3 {
-    margin-bottom: 0.75rem;
-  }
-
   .cs\:h-full {
     height: 100%;
-  }
-
-  .cs\:h-screen {
-    height: 100vh;
-  }
-
-  .cs\:h-4\/5 {
-    height: 80%;
-  }
-
-  .cs\:w-1\/2 {
-    width: 50%;
-  }
-
-  .cs\:w-4\/5 {
-    width: 80%;
-  }
-
-  .cs\:w-screen {
-    width: 100vw;
   }
 
   .cs\:w-full {
@@ -1388,12 +1372,12 @@ video {
     flex-direction: column;
   }
 
-  .cs\:p-4 {
-    padding: 1rem;
-  }
-
   .cs\:p-2 {
     padding: 0.5rem;
+  }
+
+  .cs\:p-4 {
+    padding: 1rem;
   }
 
   .cs\:py-1 {
