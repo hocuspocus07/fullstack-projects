@@ -600,10 +600,6 @@ video {
   }
 }
 
-.visible {
-  visibility: visible;
-}
-
 .fixed {
   position: fixed;
 }
@@ -616,8 +612,16 @@ video {
   position: relative;
 }
 
+.inset-0 {
+  inset: 0px;
+}
+
 .bottom-0 {
   bottom: 0px;
+}
+
+.bottom-28 {
+  bottom: 7rem;
 }
 
 .bottom-8 {
@@ -664,20 +668,8 @@ video {
   top: 0px;
 }
 
-.top-1\/4 {
-  top: 25%;
-}
-
 .top-\[50\%\] {
   top: 50%;
-}
-
-.bottom-24 {
-  bottom: 6rem;
-}
-
-.bottom-28 {
-  bottom: 7rem;
 }
 
 .z-10 {
@@ -708,9 +700,17 @@ video {
   margin: 0.5rem;
 }
 
+.m-4 {
+  margin: 1rem;
+}
+
 .mx-2 {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
+}
+
+.mb-10 {
+  margin-bottom: 2.5rem;
 }
 
 .ml-12 {
@@ -753,6 +753,10 @@ video {
   margin-top: 0.75rem;
 }
 
+.block {
+  display: block;
+}
+
 .flex {
   display: flex;
 }
@@ -781,8 +785,16 @@ video {
   height: 4rem;
 }
 
+.h-2\/3 {
+  height: 66.666667%;
+}
+
 .h-20 {
   height: 5rem;
+}
+
+.h-24 {
+  height: 6rem;
 }
 
 .h-3\/5 {
@@ -791,6 +803,10 @@ video {
 
 .h-32 {
   height: 8rem;
+}
+
+.h-36 {
+  height: 9rem;
 }
 
 .h-4 {
@@ -829,16 +845,17 @@ video {
   height: 2rem;
 }
 
-.h-96 {
-  height: 24rem;
-}
-
 .h-auto {
   height: auto;
 }
 
 .h-full {
   height: 100%;
+}
+
+.h-max {
+  height: -moz-max-content;
+  height: max-content;
 }
 
 .h-screen {
@@ -869,12 +886,12 @@ video {
   width: 2.75rem;
 }
 
-.w-12 {
-  width: 3rem;
+.w-11\/12 {
+  width: 91.666667%;
 }
 
-.w-16 {
-  width: 4rem;
+.w-12 {
+  width: 3rem;
 }
 
 .w-2\/3 {
@@ -933,8 +950,17 @@ video {
   width: 100%;
 }
 
+.w-max {
+  width: -moz-max-content;
+  width: max-content;
+}
+
 .w-screen {
   width: 100vw;
+}
+
+.w-36 {
+  width: 9rem;
 }
 
 .flex-grow {
@@ -985,6 +1011,10 @@ video {
   gap: 0.25rem;
 }
 
+.gap-6 {
+  gap: 1.5rem;
+}
+
 .space-x-1 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.25rem * var(--tw-space-x-reverse));
@@ -1001,6 +1031,14 @@ video {
 
 .overflow-y-auto {
   overflow-y: auto;
+}
+
+.overflow-y-scroll {
+  overflow-y: scroll;
+}
+
+.text-wrap {
+  text-wrap: wrap;
 }
 
 .rounded-full {
@@ -1232,13 +1270,43 @@ video {
   z-index: 1000;
 }
 
+/* Apply to any container where you want hidden scrollbars */
+
+.scroll-hidden {
+  overflow: scroll;
+  /* Enable scroll functionality */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+/* Chrome, Safari, and Edge */
+
+.scroll-hidden::-webkit-scrollbar {
+  display: none;
+  /* Hides scrollbar */
+}
+
 .hover\:cursor-pointer:hover {
   cursor: pointer;
+}
+
+.hover\:border-2:hover {
+  border-width: 2px;
+}
+
+.hover\:border-blue-950:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(23 37 84 / var(--tw-border-opacity));
 }
 
 .hover\:bg-\[\#000081\]:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 129 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-blue-800:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(30 64 175 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-blue-900:hover {
@@ -1249,6 +1317,18 @@ video {
 .hover\:text-white:hover {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+@media (min-width: 640px) {
+  .sm\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 @media (min-width: 1024px) {
@@ -1262,6 +1342,10 @@ video {
 
   .lg\:mt-12 {
     margin-top: 3rem;
+  }
+
+  .lg\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .lg\:items-center {

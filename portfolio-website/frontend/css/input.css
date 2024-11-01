@@ -24,3 +24,21 @@
     width: 100%;
     z-index: 1000;
 }
+
+
+/* Apply to any container where you want hidden scrollbars */
+
+.scroll-hidden {
+    overflow: scroll;
+    /* Enable scroll functionality */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+
+/* Chrome, Safari, and Edge */
+
+.scroll-hidden::-webkit-scrollbar {
+    display: none;
+    /* Hides scrollbar */
+}

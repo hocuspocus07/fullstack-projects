@@ -74,7 +74,7 @@ gamesmenu.addEventListener('mouseenter', showGameMenu);
 games.addEventListener('mouseleave', hideGameMenu);
 gamesmenu.addEventListener('mouseleave', hideGameMenu);
 
-//function to run programs
+const closeButton = document.getElementById('close-iframe');
 
 function runProgram(program) {
     const tabContainer = document.getElementById('tab-container');
@@ -82,50 +82,60 @@ function runProgram(program) {
     startmenu.classList.add("hidden");
     const startimage = document.getElementById('start-image');
     startimage.src = "./assets/start-button.gif";
-    tabCount++;
+
     const newTab = openedtab.cloneNode(true);
     const tabId = `tab-${program.toLowerCase()}`;
     newTab.id = tabId;
     newTab.classList.remove('hidden');
-    newTab.classList.add('flex', `tab-${tabCount}`);
+    newTab.classList.add('flex');
+
     newTab.querySelector('.tab-content').textContent = program;
     newTab.querySelector('#tab-icon').src = `./assets/${program.toLowerCase()}.png`;
-    tabContainer.appendChild(newTab);
-    const closeButton = document.getElementById('close-iframe');
-    closeButton.onclick = function() {
-        closeWindow(tabId);
-    };
 
-    document.getElementById('tab-container').appendChild(newTab);
+    tabContainer.appendChild(newTab);
+
+    const closeTabButton = newTab.querySelector('.right-0 img');
+    closeTabButton.onclick = () => closeWindow(tabId);
+    closeButton.onclick = () => closeWindow(tabId);
 
     const multipWindow = document.getElementById('multip-window');
+    multipWindow.style.display = "block";
     multipWindow.classList.remove('hidden');
     multipWindow.classList.add('flex', 'z-20');
-    if (`./assets/${program.toLowerCase()}.png`) {
-        document.getElementById('program-icon').src = `./assets/${program.toLowerCase()}.png`;
-        document.getElementById('program-name').textContent = program;
-    }
-    const iframe = document.getElementById('window-iframe');
-    iframe.src = "";
 
-    if (program === "MineSweeper") {
-        iframe.src = "https://hocuspocus07.github.io/Minesweeper/";
-    } else if (program === "WaterSort") {
-        iframe.src = "https://hocuspocus07.github.io/WaterSortGame/";
-    } else if (program === "Resume") {
-        iframe.src = "./assets/resume.pdf";
-        document.getElementById('program-icon').src = './assets/pdficon.png';
-    } else if (program === "Contact Me") {
-        iframe.src = "./components/contact.html";
-        document.getElementById('program-icon').src = './assets/contact.png';
-    } else if (program === "Techstack") {
-        iframe.src = "./components/techstack.html";
-    } else if (program === "Date/Time Properties") {
-        iframe.src = "./components/datentime.html";
-        document.getElementById('program-icon').src = './assets/clock.png';
-    }
+    document.getElementById('program-icon').src = `./assets/${program.toLowerCase()}.png`;
+    document.getElementById('program-name').textContent = program;
+
+    const iframe = document.getElementById('window-iframe');
+    iframe.src = getIframeSource(program);
 }
 
+function getIframeSource(program) {
+    switch (program) {
+        case "MineSweeper":
+            return "https://hocuspocus07.github.io/Minesweeper/";
+        case "WaterSort":
+            return "https://hocuspocus07.github.io/WaterSortGame/";
+        case "Resume":
+            return "./assets/resume.pdf";
+        case "Contact Me":
+            return "./components/contact.html";
+        case "Techstack":
+            return "./components/techstack.html";
+        case "Date/Time Properties":
+            return "./components/datentime.html";
+        case "Projects":
+            return "./components/projects.html";
+        case "WaterGame":
+            return "https://owaismohammad.github.io/TeamAqua/watergame.html";
+        case "Drawings":
+            return "./components/drawings.html";
+        case "Achievements":
+            return "./components/achievements.html";
+        default:
+            return "";
+    }
+}
 let isMaximized = false;
 
 function operateIframe(operation) {
@@ -137,10 +147,10 @@ function operateIframe(operation) {
     } else if (operation === "maximise") {
         if (!isMaximized) {
             multipWindow.classList.add("maximized");
-            multipWindow.classList.remove("top-1/4", "left-1/3", "w-1/3", "h-96");
+            multipWindow.classList.remove("top-1/5", "left-1/3", "w-1/3", "h-4/5");
         } else {
             multipWindow.classList.remove("maximized");
-            multipWindow.classList.add("top-1/4", "left-1/3", "w-1/3", "h-96");
+            multipWindow.classList.add("top-1/5", "left-1/3", "w-1/3", "h-4/5");
         }
         isMaximized = !isMaximized;
     }
@@ -160,7 +170,6 @@ function toggleTab(event) {
         tab.style.zIndex = 10;
     }
 
-    // Remove the window visibility control from here
     window.classList.toggle('hidden');
     if (!window.classList.contains('hidden')) {
         window.classList.add('flex');
@@ -168,22 +177,19 @@ function toggleTab(event) {
 }
 
 function closeWindow(tabId) {
-    console.log("Attempting to close tab with ID:", tabId); // Log tabId
-    const window = document.getElementById('multip-window');
-
-    // Close the multipurpose window
-    window.classList.remove('flex');
-    window.classList.add('hidden');
-
     const tab = document.getElementById(tabId);
-    console.log("Tab found:", tab); // Log the found tab
-
     if (tab) {
-        console.log(true);
         tab.remove();
-    } else {
-        console.log("No tab found with that ID."); // Log if tab is not found
     }
+
+    const tabContainer = document.getElementById('tab-container');
+    const remainingTabs = tabContainer.querySelectorAll('.tabs.flex');
+    const multipWindow = document.getElementById('multip-window');
+    if (remainingTabs.length === 0) {
+        multipWindow.style.display = "none";
+        multipWindow.classList.remove('flex', 'z-20', 'maximized');
+    }
+
 }
 
 
@@ -192,7 +198,6 @@ function startToggle() {
     const startimage = document.getElementById('start-image');
     startimage.src = "./assets/win-clicked.jpg";
 
-    // Toggle start menu visibility
     startmenu.classList.toggle("hidden");
     if (!startmenu.classList.contains('hidden')) {
         startmenu.classList.add("flex");
@@ -201,13 +206,36 @@ function startToggle() {
         startimage.src = "./assets/start-button.gif";
     }
 
-    // Ensure the multipurpose window remains visible when the start menu is toggled
     const multipWindow = document.getElementById('multip-window');
     if (!multipWindow.classList.contains('hidden')) {
         multipWindow.classList.remove('hidden');
         multipWindow.classList.add('flex');
     }
 }
+
+document.addEventListener('click', (event) => {
+    const startmenu = document.getElementById('start-menu');
+    const startButton = document.getElementById('start-image');
+
+    if (!startmenu.contains(event.target) && !startButton.contains(event.target)) {
+        startmenu.classList.add('hidden');
+        startmenu.classList.remove('flex');
+
+        startButton.src = "./assets/start-button.gif";
+    }
+});
+customMenu = document.getElementById('context-menu');
+document.addEventListener('contextmenu', (event) => {
+    event.preventDefault();
+    customMenu.classList.remove('hidden');
+    customMenu.classList.add('flex');
+    customMenu.style.top = `${event.clientY / 16}rem`;
+    customMenu.style.left = `${event.clientX / 16}rem`;
+})
+document.addEventListener('click', () => {
+    customMenu.classList.add('hidden');
+    customMenu.classList.remove('flex');
+});
 timeSetter()
 addEventListener('DOMContentLoaded', () => {
     timeSetter();

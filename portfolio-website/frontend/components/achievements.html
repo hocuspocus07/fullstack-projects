@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements</title>
+    <link href="../css/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/input.css">
+</head>
+
+<body class="h-screen w-screen flex justify-center items-center bg-black font-win95font">
+    <div class="scroll-hidden bg-[#BEBEBE] h-screen w-1/2 p-4 overflow-y-scroll relative">
+        <nav class="bg-[#0000A9] border-2 border-black">
+            <h1 class="ml-2 text-2xl text-white">Achievements</h1>
+        </nav>
+        <div id="certificate-viewer" class="inset-0 hidden absolute scroll-hidden mb-10">
+            <div id="controls" class="w-full h-8 bg-[#0000A9] flex justify-between z-20">
+                <div class="h-full left-0 flex">
+                    <p class="text-white m-2" id="certificate-name"></p>
+                </div>
+                <div class="right-0 h-full flex p-0 m-0">
+                    <img src="../assets/close.png" class="h-full w-6 hover:cursor-pointer" id="close-iframe" onclick="closeIframe()">
+                </div>
+            </div>
+            <iframe class="h-full w-full" id="iframe-content">
+                </iframe>
+        </div>
+        <section class=" m-4 grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <div id="1" class="certificate bg-white  flex flex-col items-center w-max h-max">
+                <div class=" flex-col justify-center border-2 border-black items-center w-40 p-4 hover:bg-blue-900 hover:text-white cursor-pointer">
+                    <img src="../assets/hackjmi.png">
+                    <span>HackJMI</span>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="../js/achievements.js"></script>
+</body>
+
+</html>
