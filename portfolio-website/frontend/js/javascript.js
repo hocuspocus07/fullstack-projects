@@ -148,6 +148,15 @@ function createProgramWindow(programName, programIconSrc, iframeSrc) {
     const tabIcon = document.createElement('img');
     tabIcon.className = "h-8 w-8 xs:ml-10";
     tabIcon.src = `./assets/${programName.toLowerCase()}.png`;
+    if (programName === "Resume") {
+        tabIcon.src = `./assets/pdficon.png`;
+    } else if (programName === "Projects") {
+        tabIcon.src = `./assets/projects-icon.png`;
+    } else if (programName === "Contact Me") {
+        tabIcon.src = `./assets/contactus.png`;
+    } else if (programName === "Achievements") {
+        tabIcon.src = `./assets/achievements-icon.png`;
+    }
     newTab.appendChild(tabIcon);
 
     const tabContent = document.createElement('p');
