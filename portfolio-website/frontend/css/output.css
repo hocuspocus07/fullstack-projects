@@ -1504,6 +1504,10 @@ video {
     flex-direction: column;
   }
 
+  .cs\:items-center {
+    align-items: center;
+  }
+
   .cs\:p-2 {
     padding: 0.5rem;
   }
