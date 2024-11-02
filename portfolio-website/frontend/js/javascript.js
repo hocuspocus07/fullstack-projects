@@ -142,7 +142,7 @@ function createProgramWindow(programName, programIconSrc, iframeSrc) {
     const newTab = document.createElement('div');
     const tabId = `tab-${tabCount}`;
     newTab.id = tabId;
-    newTab.className = "tabs h-full xs:w-32 lg:w-48 bg-[#BEBEBE] border-2 border-black flex justify-center items-center";
+    newTab.className = "tabs h-full xs:w-32 lg:w-48 bg-[#BEBEBE] border-2 border-black flex justify-center items-center hover:cursor-pointer";
     newTab.onclick = toggleTab;
 
     const tabIcon = document.createElement('img');
@@ -234,12 +234,12 @@ function toggleTab(event) {
     const windowId = `win-${tab.id.slice(4,tab.length)}`;
     const window = document.getElementById(windowId);
 
-    if (window.classList.contains('hidden')) {
-        window.classList.remove('hidden');
+    if (window.style.display == "none") {
+        window.style.display = "block";
         window.classList.add('flex');
         window.style.zIndex = 10;
-    } else {
-        window.classList.add('hidden');
+    } else if (window.style.display = "block") {
+        window.style.display = "none";
     }
 }
 
