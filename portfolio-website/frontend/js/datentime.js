@@ -21,11 +21,13 @@ function generateCalendar(year, month) {
     const firstDay = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
 
+    //dynamically add empty spaces
     for (let i = 0; i < firstDay; i++) {
         const emptyDiv = document.createElement("div");
         datesContainer.appendChild(emptyDiv);
     }
 
+    //dynamically add dates
     for (let day = 1; day <= daysInMonth; day++) {
         const dateDiv = document.createElement("div");
         dateDiv.textContent = day;
@@ -36,9 +38,10 @@ function generateCalendar(year, month) {
         datesContainer.appendChild(dateDiv);
     }
 }
-
+//generates today's calender by default
 generateCalendar(today.getFullYear(), today.getMonth());
 
+// upon Change, the calender changes
 calendermonth.addEventListener('change', () => {
     const valuemonth = calendermonth.value;
     const valueyear = yearselect.value;
@@ -50,17 +53,18 @@ yearselect.addEventListener('change', () => {
     generateCalendar(valueyear, valuemonth)
 });
 
+//analog clock functioning
 function updateClock() {
     const now = new Date();
     const seconds = now.getSeconds();
     const minutes = now.getMinutes();
     const hours = now.getHours();
-    const timeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`
+    const timeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}` //add zeroes if the hours or minutes are single digits
     timeselectdiv.value = timeString;
 
-    const secondHandAngle = (seconds / 60) * 360;
-    const minuteHandAngle = (minutes / 60) * 360 + (seconds / 60) * 6;
-    const hourHandAngle = (hours % 12) / 12 * 360 + (minutes / 60) * 30;
+    const secondHandAngle = (seconds / 60) * 360; //total degrees/total seconds
+    const minuteHandAngle = (minutes / 60) * 360 + (seconds / 60) * 6; //degrees/minutes + seconds for smooth transition(each second contributes 0.1 degrees)
+    const hourHandAngle = (hours % 12) / 12 * 360 + (minutes / 60) * 30; //360 in 12 hours, hence to get time in 12 hour format (%12), each minute moves hour hand by 0.5 degrees
 
     document.getElementById('second').style.transform = `translate(-50%, -100%) rotate(${secondHandAngle}deg)`;
     document.getElementById('minute').style.transform = `translate(-50%, -100%) rotate(${minuteHandAngle}deg)`;
@@ -74,7 +78,7 @@ function addHours() {
     const clockRadius = clockDiameter / 2;
     const remSize = clockDiameter / 16;
     const markerRadius = clockRadius / remSize - 0.5;
-
+    //dynamically add hour markers
     for (let i = 0; i < 12; i++) {
         const marker = document.createElement("div");
         marker.className = "absolute bg-[#54A8A9] border-2 border-white";

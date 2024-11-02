@@ -1,5 +1,7 @@
 let tabCount = 0;
 const openedtab = document.getElementById('tab-opened');
+
+//function to set the time in time-div
 const timeSetter = () => {
     const date = new Date();
     const hoverTime = date.toLocaleString();
@@ -41,6 +43,7 @@ function hideToolMenu() {
     toolsmenu.classList.remove('flex');
 }
 
+//hovering effect over various elements
 tools.addEventListener('mouseenter', showToolMenu);
 toolsmenu.addEventListener('mouseenter', showToolMenu);
 
@@ -76,6 +79,7 @@ gamesmenu.addEventListener('mouseleave', hideGameMenu);
 
 const closeButton = document.getElementById('close-iframe');
 
+//creates a window for a programname,icon link, and a source as its parameters
 function createProgramWindow(programName, programIconSrc, iframeSrc) {
     tabCount++;
     const programWindow = document.createElement('div');
@@ -83,6 +87,7 @@ function createProgramWindow(programName, programIconSrc, iframeSrc) {
     programWindow.id = id;
     programWindow.className = "xs:w-full xs:h-2/3 cs:h-2/3 cs:w-full cs:left-0 xs:left-0 fixed top-0 left-1/3 w-1/3 h-4/5 flex-col bg-[#BEC7C9] p-1 overflow-auto resize z-50 font-win95font";
 
+    //setting up control-div
     const controls = document.createElement('div');
     controls.className = "w-full h-6 bg-[#0000A9] flex justify-between p-1";
     programWindow.appendChild(controls);
@@ -131,6 +136,8 @@ function createProgramWindow(programName, programIconSrc, iframeSrc) {
     document.body.appendChild(programWindow);
     dragElement(programWindow);
 
+    //creating a tab which corresponds to the particular window in the tab container
+
     const tabContainer = document.getElementById('tab-container');
     const newTab = document.createElement('div');
     const tabId = `tab-${tabCount}`;
@@ -154,12 +161,13 @@ function createProgramWindow(programName, programIconSrc, iframeSrc) {
     closeTabButton.onclick = () => closeWindow(id);
     newTab.appendChild(closeTabButton);
 
-    tabContainer.appendChild(newTab);
+    tabContainer.appendChild(newTab); //append the created tab into the div
 
     newTab.classList.remove('hidden');
     newTab.classList.add('flex');
 }
 
+//closes the window and tab when any of the close button is clicked
 function closeWindow(windowId) {
 
     const tabId = `tab-${windowId.replace('win-', '')}`;
@@ -176,7 +184,7 @@ function closeWindow(windowId) {
     tabCount--;
 }
 
-
+//toggling the start button
 function startToggle() {
     const startmenu = document.getElementById('start-menu');
     const startimage = document.getElementById('start-image');
@@ -191,6 +199,7 @@ function startToggle() {
     }
 }
 
+//hiding the start menu when we click anywhere outside the startmenu or button
 document.addEventListener('click', (event) => {
     const startmenu = document.getElementById('start-menu');
     const startButton = document.getElementById('start-image');
@@ -202,6 +211,8 @@ document.addEventListener('click', (event) => {
         startButton.src = "./assets/start-button.gif";
     }
 });
+
+//adding a custom context menu(right click)
 customMenu = document.getElementById('context-menu');
 document.addEventListener('contextmenu', (event) => {
     event.preventDefault();
@@ -215,6 +226,7 @@ document.addEventListener('click', () => {
     customMenu.classList.remove('flex');
 });
 
+//minimising and reopening the window from its tab
 function toggleTab(event) {
     event.stopPropagation();
 
@@ -231,6 +243,7 @@ function toggleTab(event) {
     }
 }
 
+//tell the user to switch to laptop
 function isMobile() {
     return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 }
@@ -239,7 +252,7 @@ if (isMobile()) {
     alert("For the best experience, please access this website on a larger screen(laptop/desktop).");
 }
 
-
+//sets the time
 timeSetter()
 addEventListener('DOMContentLoaded', () => {
     timeSetter();
