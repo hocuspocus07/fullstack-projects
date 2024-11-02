@@ -600,6 +600,10 @@ video {
   }
 }
 
+.visible {
+  visibility: visible;
+}
+
 .fixed {
   position: fixed;
 }
@@ -753,10 +757,6 @@ video {
   margin-top: 0.75rem;
 }
 
-.block {
-  display: block;
-}
-
 .flex {
   display: flex;
 }
@@ -807,10 +807,6 @@ video {
 
 .h-36 {
   height: 9rem;
-}
-
-.h-4 {
-  height: 1rem;
 }
 
 .h-4\/5 {
@@ -904,10 +900,6 @@ video {
 
 .w-32 {
   width: 8rem;
-}
-
-.w-4 {
-  width: 1rem;
 }
 
 .w-4\/5 {
@@ -1324,10 +1316,6 @@ video {
 }
 
 @media (min-width: 1024px) {
-  .lg\:fixed {
-    position: fixed;
-  }
-
   .lg\:m-0 {
     margin: 0px;
   }
@@ -1379,28 +1367,16 @@ video {
     margin-bottom: 0.75rem;
   }
 
+  .xs\:ml-10 {
+    margin-left: 2.5rem;
+  }
+
   .xs\:ml-24 {
     margin-left: 6rem;
   }
 
   .xs\:mt-6 {
     margin-top: 1.5rem;
-  }
-
-  .xs\:ml-2 {
-    margin-left: 0.5rem;
-  }
-
-  .xs\:ml-32 {
-    margin-left: 8rem;
-  }
-
-  .xs\:ml-8 {
-    margin-left: 2rem;
-  }
-
-  .xs\:ml-10 {
-    margin-left: 2.5rem;
   }
 
   .xs\:h-2\/3 {
@@ -1413,6 +1389,14 @@ video {
 
   .xs\:h-full {
     height: 100%;
+  }
+
+  .xs\:h-screen {
+    height: 100vh;
+  }
+
+  .xs\:w-32 {
+    width: 8rem;
   }
 
   .xs\:w-4\/5 {
@@ -1431,18 +1415,6 @@ video {
     width: 100vw;
   }
 
-  .xs\:w-2\/3 {
-    width: 66.666667%;
-  }
-
-  .xs\:w-20 {
-    width: 5rem;
-  }
-
-  .xs\:w-32 {
-    width: 8rem;
-  }
-
   .xs\:flex-col {
     flex-direction: column;
   }
@@ -1457,10 +1429,6 @@ video {
     overflow: auto;
   }
 
-  .xs\:text-wrap {
-    text-wrap: wrap;
-  }
-
   .xs\:p-4 {
     padding: 1rem;
   }
@@ -1468,10 +1436,6 @@ video {
   .xs\:py-1 {
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
-  }
-
-  .xs\:pl-2 {
-    padding-left: 0.5rem;
   }
 }
 
@@ -1488,16 +1452,24 @@ video {
     margin-top: 1rem;
   }
 
-  .cs\:h-full {
-    height: 100%;
-  }
-
   .cs\:h-2\/3 {
     height: 66.666667%;
   }
 
+  .cs\:h-full {
+    height: 100%;
+  }
+
+  .cs\:h-screen {
+    height: 100vh;
+  }
+
   .cs\:w-full {
     width: 100%;
+  }
+
+  .cs\:w-screen {
+    width: 100vw;
   }
 
   .cs\:flex-col {

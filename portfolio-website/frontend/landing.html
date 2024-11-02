@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/win95icon.jpg" type="image/x-icon">
+    <title>Starting up...</title>
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .startup-logo {
+            font-size: 2em;
+            animation: fadeOut 1.5s 3s forwards;
+        }
+        
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="startup-logo">
+        <img src="./assets/windowslanding.png" alt="Windows 95 Logo">
+        <p>Loading...</p>
+    </div>
+    <script>
+        setTimeout(() => {
+            window.location.href = "index.html";
+        }, 3500);
+    </script>
+</body>
+
+</html>

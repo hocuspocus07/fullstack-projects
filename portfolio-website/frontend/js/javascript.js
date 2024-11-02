@@ -76,137 +76,104 @@ gamesmenu.addEventListener('mouseleave', hideGameMenu);
 
 const closeButton = document.getElementById('close-iframe');
 
-function runProgram(program) {
+function createProgramWindow(programName, programIconSrc, iframeSrc) {
+    tabCount++;
+    const programWindow = document.createElement('div');
+    const id = `win-${tabCount}`;
+    programWindow.id = id;
+    programWindow.className = "xs:w-full xs:h-2/3 cs:h-2/3 cs:w-full cs:left-0 xs:left-0 fixed top-0 left-1/3 w-1/3 h-4/5 flex-col bg-[#BEC7C9] p-1 overflow-auto resize z-50 font-win95font";
+
+    const controls = document.createElement('div');
+    controls.className = "w-full h-6 bg-[#0000A9] flex justify-between p-1";
+    programWindow.appendChild(controls);
+
+    const leftControls = document.createElement('div');
+    leftControls.className = "w-28 h-full flex items-center";
+    controls.appendChild(leftControls);
+
+    const icon = document.createElement('img');
+    icon.src = programIconSrc;
+    icon.className = "h-6 w-8 pr-1";
+    leftControls.appendChild(icon);
+
+    const name = document.createElement('p');
+    name.textContent = programName;
+    name.className = "text-white";
+    leftControls.appendChild(name);
+
+    const rightControls = document.createElement('div');
+    rightControls.className = "h-full flex";
+    controls.appendChild(rightControls);
+
+    const minimizeButton = document.createElement('img');
+    minimizeButton.src = "assets/minimise.png";
+    minimizeButton.className = "h-full w-6 hover:cursor-pointer";
+    minimizeButton.onclick = () => programWindow.style.display = 'none';
+    rightControls.appendChild(minimizeButton);
+
+    const maximizeButton = document.createElement('img');
+    maximizeButton.src = "assets/maximise.png";
+    maximizeButton.className = "h-full w-6 hover:cursor-pointer";
+    maximizeButton.onclick = () => programWindow.classList.toggle('maximized');
+    rightControls.appendChild(maximizeButton);
+
+    const closeButton = document.createElement('img');
+    closeButton.src = "assets/close.png";
+    closeButton.className = "h-full w-6 hover:cursor-pointer";
+    closeButton.onclick = () => closeWindow(id);
+    rightControls.appendChild(closeButton);
+
+    const iframe = document.createElement('iframe');
+    iframe.src = iframeSrc;
+    iframe.className = "w-full h-full xs:w-screen xs:h-screen cs:h-screen cs:w-screen";
+    programWindow.appendChild(iframe);
+
+    document.body.appendChild(programWindow);
+    dragElement(programWindow);
+
     const tabContainer = document.getElementById('tab-container');
-    const startmenu = document.getElementById('start-menu');
-    startmenu.classList.add("hidden");
-    const startimage = document.getElementById('start-image');
-    startimage.src = "./assets/start-button.gif";
-
-    const newTab = openedtab.cloneNode(true);
-    const tabId = `tab-${program.toLowerCase()}`;
+    const newTab = document.createElement('div');
+    const tabId = `tab-${tabCount}`;
     newTab.id = tabId;
-    newTab.classList.remove('hidden');
-    newTab.classList.add('flex');
+    newTab.className = "tabs h-full xs:w-32 lg:w-48 bg-[#BEBEBE] border-2 border-black flex justify-center items-center";
+    newTab.onclick = toggleTab;
 
-    newTab.querySelector('.tab-content').textContent = program;
-    newTab.querySelector('#tab-icon').src = `./assets/${program.toLowerCase()}.png`;
-    document.getElementById('program-icon').src = `./assets/${program.toLowerCase()}.png`;
-    if (program === "Resume") {
-        document.getElementById('program-icon').src = `./assets/pdficon.png`;
-        newTab.querySelector('#tab-icon').src = `./assets/pdficon.png`;
-    } else if (program === "Contact Me") {
-        document.getElementById('program-icon').src = `./assets/contact.png`;
-        newTab.querySelector('#tab-icon').src = `./assets/contact.png`;
+    const tabIcon = document.createElement('img');
+    tabIcon.className = "h-8 w-8 xs:ml-10";
+    tabIcon.src = `./assets/${programName.toLowerCase()}.png`;
+    newTab.appendChild(tabIcon);
 
-    } else if (program === "Achievements") {
-        document.getElementById('program-icon').src = `./assets/achievements-icon.png`;
-        newTab.querySelector('#tab-icon').src = `./assets/achievements-icon.png`;
+    const tabContent = document.createElement('p');
+    tabContent.className = "tab-content";
+    tabContent.textContent = programName;
+    newTab.appendChild(tabContent);
 
-    } else if (program === "Projects") {
-        document.getElementById('program-icon').src = `./assets/projects-icon.png`;
-        newTab.querySelector('#tab-icon').src = `./assets/projects-icon.png`;
+    const closeTabButton = document.createElement('span');
+    closeTabButton.className = "right-0 ml-12 bg-gray-600 h-6 w-6 hover:cursor-pointer";
+    closeTabButton.innerHTML = `<img src="assets/close.png">`;
+    closeTabButton.onclick = () => closeWindow(id);
+    newTab.appendChild(closeTabButton);
 
-    } else if (program === "Date/Time Properties") {
-        document.getElementById('program-icon').src = `./assets/clock.png`;
-        newTab.querySelector('#tab-icon').src = `./assets/clock.png`;
-    }
-    document.getElementById('program-name').textContent = program;
     tabContainer.appendChild(newTab);
 
-    const closeTabButton = newTab.querySelector('.right-0 img');
-    closeTabButton.onclick = () => closeWindow(tabId);
-    closeButton.onclick = () => closeWindow(tabId);
-
-    const multipWindow = document.getElementById('multip-window');
-    multipWindow.style.display = "block";
-    multipWindow.classList.remove('hidden');
-    multipWindow.classList.add('flex', 'z-20');
-
-    const iframe = document.getElementById('window-iframe');
-    iframe.src = getIframeSource(program);
+    newTab.classList.remove('hidden');
+    newTab.classList.add('flex');
 }
 
-function getIframeSource(program) {
-    switch (program) {
-        case "MineSweeper":
-            return "https://hocuspocus07.github.io/Minesweeper/";
-        case "WaterSort":
-            return "https://hocuspocus07.github.io/WaterSortGame/";
-        case "Resume":
-            return "./assets/resume.pdf";
-        case "Contact Me":
-            return "./components/contact.html";
-        case "Techstack":
-            return "./components/techstack.html";
-        case "Date/Time Properties":
-            return "./components/datentime.html";
-        case "Projects":
-            return "./components/projects.html";
-        case "WaterGame":
-            return "https://owaismohammad.github.io/TeamAqua/watergame.html";
-        case "Drawings":
-            return "./components/drawings.html";
-        case "Achievements":
-            return "./components/achievements.html";
-        default:
-            return "";
-    }
-}
-let isMaximized = false;
+function closeWindow(windowId) {
 
-function operateIframe(operation) {
-    const multipWindow = document.getElementById('multip-window');
+    const tabId = `tab-${windowId.replace('win-', '')}`;
+    const tabToClose = document.getElementById(tabId);
 
-    if (operation === "minimise") {
-        multipWindow.classList.add('hidden');
-        isMaximized = false;
-    } else if (operation === "maximise") {
-        if (!isMaximized) {
-            multipWindow.classList.add("maximized");
-            multipWindow.classList.remove("top-1/5", "left-1/3", "w-1/3", "h-4/5");
-        } else {
-            multipWindow.classList.remove("maximized");
-            multipWindow.classList.add("top-1/5", "left-1/3", "w-1/3", "h-4/5");
-        }
-        isMaximized = !isMaximized;
-    }
-}
-
-
-
-function toggleTab(event) {
-    event.stopPropagation();
-
-    const tab = event.currentTarget;
-    const window = document.getElementById('multip-window');
-
-    if (tab.classList.contains('hidden')) {
-        tab.classList.remove('hidden');
-        tab.classList.add('flex');
-        tab.style.zIndex = 10;
+    const windowToClose = document.getElementById(windowId);
+    if (windowToClose) {
+        windowToClose.remove();
     }
 
-    window.classList.toggle('hidden');
-    if (!window.classList.contains('hidden')) {
-        window.classList.add('flex');
+    if (tabToClose) {
+        tabToClose.remove();
     }
-}
-
-function closeWindow(tabId) {
-    const tab = document.getElementById(tabId);
-    if (tab) {
-        tab.remove();
-    }
-
-    const tabContainer = document.getElementById('tab-container');
-    const remainingTabs = tabContainer.querySelectorAll('.tabs.flex');
-    const multipWindow = document.getElementById('multip-window');
-    if (remainingTabs.length === 0) {
-        multipWindow.style.display = "none";
-        multipWindow.classList.remove('flex', 'z-20', 'maximized');
-    }
-
+    tabCount--;
 }
 
 
@@ -221,12 +188,6 @@ function startToggle() {
     } else {
         startmenu.classList.remove("flex");
         startimage.src = "./assets/start-button.gif";
-    }
-
-    const multipWindow = document.getElementById('multip-window');
-    if (!multipWindow.classList.contains('hidden')) {
-        multipWindow.classList.remove('hidden');
-        multipWindow.classList.add('flex');
     }
 }
 
@@ -253,6 +214,32 @@ document.addEventListener('click', () => {
     customMenu.classList.add('hidden');
     customMenu.classList.remove('flex');
 });
+
+function toggleTab(event) {
+    event.stopPropagation();
+
+    const tab = event.currentTarget;
+    const windowId = `win-${tab.id.slice(4,tab.length)}`;
+    const window = document.getElementById(windowId);
+
+    if (window.classList.contains('hidden')) {
+        window.classList.remove('hidden');
+        window.classList.add('flex');
+        window.style.zIndex = 10;
+    } else {
+        window.classList.add('hidden');
+    }
+}
+
+function isMobile() {
+    return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+}
+
+if (isMobile()) {
+    alert("For the best experience, please access this website on a larger screen(laptop/desktop).");
+}
+
+
 timeSetter()
 addEventListener('DOMContentLoaded', () => {
     timeSetter();

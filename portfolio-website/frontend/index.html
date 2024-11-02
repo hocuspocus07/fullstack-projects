@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Website</title>
+    <title>Portfolio Website | Syed Sajjad Hasnain</title>
+    <link rel="shortcut icon" href="./assets/win95icon.jpg" type="image/x-icon">
     <link href="./css/output.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/input.css">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.0/themes/base/jquery-ui.css">
@@ -22,39 +23,25 @@
 
         <!-- multipurpose window -->
 
-        <div id="multip-window" class="xs:w-full xs:h-2/3 cs:h-2/3 cs:w-full cs:left-0 xs:left-0 hidden top-1/5 left-1/3 fixed w-1/3 h-4/5 flex-col bg-[#BEC7C9] p-1 overflow-auto resize z-50">
-            <div id="controls" class="w-full h-6 bg-[#0000A9] flex justify-between p-1">
-                <div class="w-28 h-full left-0 flex">
-                    <img src="" class="left-0 h-6 w-8 pr-1 z-10" id="program-icon">
-                    <p class="text-white" id="program-name"></p>
-                </div>
-                <div class="right-0 h-full flex p-0 m-0">
-                    <img src="assets/minimise.png" class="h-full w-6 hover:cursor-pointer" id="minimise-iframe" onclick="operateIframe('minimise')">
-                    <img src="assets/maximise.png" class="h-full w-6 hover:cursor-pointer" id="maximise-iframe" onclick="operateIframe('maximise')">
-                    <img src="assets/close.png" class="h-full w-6 hover:cursor-pointer" id="close-iframe">
-                </div>
-            </div>
-            <iframe id="window-iframe" class="w-full h-full"></iframe>
-        </div>
         <div class="bg-[#017D7D] w-screen h-screen">
             <div class="flex flex-col m-2 min-h-screen  w-20 text-sm text-white items-center justify-start">
-                <div class="item flex flex-col  w-full h-24 items-center hover:cursor-pointer hover:bg-blue-800 hover:border-2 hover:border-blue-950" onclick="runProgram('Resume')">
+                <div class="item flex flex-col  w-full h-24 items-center hover:cursor-pointer hover:bg-blue-800 hover:border-2 hover:border-blue-950" onclick="createProgramWindow('Resume','./assets/pdficon.png','./assets/resume.pdf')">
                     <img src="assets/pdficon.png" class="icon">
                     <p class="text-xs">Resume</p>
                 </div>
-                <div class="items flex flex-col  w-full h-24 items-center hover:cursor-pointer hover:bg-blue-800 hover:border-2 hover:border-blue-950" onclick="runProgram('Projects')">
+                <div class="items flex flex-col  w-full h-24 items-center hover:cursor-pointer hover:bg-blue-800 hover:border-2 hover:border-blue-950" onclick="createProgramWindow('Projects','./assets/projects-icon.png','./components/projects.html')">
                     <img src="assets/projects-icon.png" class="icon h-3/5 w-4/5">
                     <p class="text-xs">Projects</p>
                 </div>
-                <div class="items flex flex-col  w-full h-24 items-center hover:cursor-pointer hover:bg-blue-800 hover:border-2 hover:border-blue-950" onclick="runProgram('Contact Me')">
+                <div class="items flex flex-col  w-full h-24 items-center hover:cursor-pointer hover:bg-blue-800 hover:border-2 hover:border-blue-950" onclick="createProgramWindow('Contact Me','./assets/contactus.png','./components/contact.html')">
                     <img src="assets/contact.png" class="icon">
                     <p class="text-xs">Contact Me</p>
                 </div>
-                <div class="items flex flex-col  w-full h-24 items-center hover:cursor-pointer hover:bg-blue-800 hover:border-2 hover:border-blue-950" onclick="runProgram('Techstack')">
+                <div class="items flex flex-col  w-full h-24 items-center hover:cursor-pointer hover:bg-blue-800 hover:border-2 hover:border-blue-950" onclick="createProgramWindow('TechStack','./assets/techstack.png','./components/techstack.html')">
                     <img src="assets/techstack.png" class="icon">
                     <p class="text-xs">TechStack</p>
                 </div>
-                <div class="items flex flex-col  w-full h-24 items-center hover:cursor-pointer hover:bg-blue-800 hover:border-2 hover:border-blue-950" onclick="runProgram('Achievements')">
+                <div class="items flex flex-col  w-full h-24 items-center hover:cursor-pointer hover:bg-blue-800 hover:border-2 hover:border-blue-950" onclick="createProgramWindow('Achievements','./assets/achievements-icon.png','./components/achievements.html')">
                     <img src="assets/achievements-icon.png" class="icon">
                     <p class="text-xs">Achievements</p>
                 </div>
@@ -69,15 +56,15 @@
                 <div id="start-toolbar" class="flex flex-grow flex-col text-sm">
                     <div id="games" class="flex items-center hover:border-2 hover:border-blue-950 hover:bg-[#000081] hover:text-white hover:cursor-pointer"><img src="assets/games.png " class="h-12 w-12 ">Games<span class="ml-auto text-xs">&#9654;</span></div>
                     <div id="games-menu" class="hidden fixed flex-grow bottom-30 m-1 left-48 bg-[#BEBEBE] flex-col w-32 h-40 border-2 border-white">
-                        <div class="w-full flex items-center py-1 hover:border-2 hover:border-blue-950 hover:bg-[#000081] hover:text-white hover:cursor-pointer" onclick="runProgram('MineSweeper')">
+                        <div class="w-full flex items-center py-1 hover:border-2 hover:border-blue-950 hover:bg-[#000081] hover:text-white hover:cursor-pointer" onclick="createProgramWindow('MineSweeper','./assets/minesweeper.png',`https://hocuspocus07.github.io/Minesweeper`)">
                             <img src="assets/minesweeper.png" class="w-10 h-10">
                             <span>MineSweeper</span>
                         </div>
-                        <div class="w-full flex items-center py-1 hover:border-2 hover:border-blue-950 hover:bg-[#000081] hover:text-white hover:cursor-pointer" onclick="runProgram('WaterGame')">
+                        <div class="w-full flex items-center py-1 hover:border-2 hover:border-blue-950 hover:bg-[#000081] hover:text-white hover:cursor-pointer" onclick="createProgramWindow('WaterGame','./assets/games.png',`https://owaismohammad.github.io/TeamAqua/watergame.html`)">
                             <img src="assets/games.png" class="w-10 h-10">
                             <span>WaterGame</span>
                         </div>
-                        <div class="w-full flex items-center py-1 hover:border-2 hover:border-blue-950 hover:bg-[#000081] hover:text-white hover:cursor-pointer" onclick="runProgram('WaterSort')">
+                        <div class="w-full flex items-center py-1 hover:border-2 hover:border-blue-950 hover:bg-[#000081] hover:text-white hover:cursor-pointer" onclick="createProgramWindow('WaterSort','./assets/watersort.png',`https://hocuspocus07.github.io/WaterSortGame`)">
                             <img src="assets/watersort.png" class="w-10 h-10">
                             <span>WaterSort</span>
                         </div>
@@ -85,12 +72,12 @@
 
                     <div id="tools" class="flex items-center hover:border-2 hover:border-blue-950 hover:bg-[#000081] hover:text-white hover:cursor-pointer"><img src="assets/contact.png" class="h-12 w-12">Tools<span class="ml-auto text-xs">&#9654;</span></div>
                     <div id="tools-menu" class="hidden fixed flex-grow bottom-28 m-1 left-48 bg-[#BEBEBE] flex-col w-32 h-40 border-2 border-white">
-                        <div class="w-full flex items-center py-1 hover:border-2 hover:border-blue-950 hover:bg-[#000081] hover:text-white hover:cursor-pointer" onclick="runProgram('Date/Time Properties')">
+                        <div class="w-full flex items-center py-1 hover:border-2 hover:border-blue-950 hover:bg-[#000081] hover:text-white hover:cursor-pointer" onclick="createProgramWindow('Date/Time Properties','./assets/clock.png',`./components/datentime.html`)">
                             <img src="assets/clock.png" class="w-10 h-10">
                             <span>Date & Time</span>
                         </div>
                     </div>
-                    <div class="flex items-center hover:border-2 hover:border-blue-950 hover:bg-[#000081] hover:text-white hover:cursor-pointer" onclick="runProgram('Drawings')"><img src="assets/drawings.png " class="h-12 w-12 ">Drawings</div>
+                    <div class="flex items-center hover:border-2 hover:border-blue-950 hover:bg-[#000081] hover:text-white hover:cursor-pointer" onclick="createProgramWindow('Drawings','./assets/drawings.png',`./components/drawings.html`)"><img src="assets/drawings.png " class="h-12 w-12 ">Drawings</div>
                     <hr>
                     <a href="https://in.linkedin.com/in/sajjadhasnain" target="_blank">
                         <div class="flex items-center hover:border-2 hover:border-blue-950 hover:bg-[#000081] hover:text-white hover:cursor-pointer">
@@ -109,13 +96,13 @@
             <!-- opened tabs divs  -->
 
             <div class="flex space-x-1 ml-24" id="tab-container">
-                <div class="tabs h-full xs:w-32 lg:w-48 bg-[#BEBEBE] border-2 border-black hidden justify-center items-center" id="tab-opened" onclick="toggleTab(event)">
+                <div class="tabs h-full xs:w-32 lg:w-48 bg-[#BEBEBE] border-2 border-black hidden justify-center items-center hover:cursor-pointer" onclick="toggleTab(event)">
                     <img class="h-8 w-8 xs:ml-10" id="tab-icon">
                     <p class="tab-content"></p>
                     <span class="right-0 ml-12 bg-gray-600 h-6 w-6"><img src="assets/close.png"></span>
                 </div>
             </div>
-            <div class="text-black fixed flex justify-center items-center right-1 hover:cursor-pointer border-gray-500 border-2 w-20 h-8 " id="time-div" onclick="runProgram('Date/Time Properties')"></div>
+            <div class="text-black fixed flex justify-center items-center right-1 hover:cursor-pointer border-gray-500 border-2 w-20 h-8 " id="time-div" onclick="createProgramWindow('Date/Time Properties','./assets/clock.png',`./components/datentime.html`)"></div>
             <div class="bg-[#BEBEBE] border-2 border-black fixed right-0 bottom-8 h-auto w-auto text-lg px-1 hidden" id="hover-time"></div>
         </div>
     </div>
@@ -123,6 +110,12 @@
     <script src="https://code.jquery.com/ui/1.14.0/jquery-ui.js"></script>
     <script src="js/javascript.js"></script>
     <script src="js/movablewindow.js"></script>
+    <script>
+        if (!sessionStorage.getItem("visited")) {
+            sessionStorage.setItem("visited", "true");
+            window.location.href = "landing.html";
+        }
+    </script>
 
 </body>
 
