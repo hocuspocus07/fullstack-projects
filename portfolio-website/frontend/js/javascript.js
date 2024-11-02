@@ -91,7 +91,27 @@ function runProgram(program) {
 
     newTab.querySelector('.tab-content').textContent = program;
     newTab.querySelector('#tab-icon').src = `./assets/${program.toLowerCase()}.png`;
+    document.getElementById('program-icon').src = `./assets/${program.toLowerCase()}.png`;
+    if (program === "Resume") {
+        document.getElementById('program-icon').src = `./assets/pdficon.png`;
+        newTab.querySelector('#tab-icon').src = `./assets/pdficon.png`;
+    } else if (program === "Contact Me") {
+        document.getElementById('program-icon').src = `./assets/contact.png`;
+        newTab.querySelector('#tab-icon').src = `./assets/contact.png`;
 
+    } else if (program === "Achievements") {
+        document.getElementById('program-icon').src = `./assets/achievements-icon.png`;
+        newTab.querySelector('#tab-icon').src = `./assets/achievements-icon.png`;
+
+    } else if (program === "Projects") {
+        document.getElementById('program-icon').src = `./assets/projects-icon.png`;
+        newTab.querySelector('#tab-icon').src = `./assets/projects-icon.png`;
+
+    } else if (program === "Date/Time Properties") {
+        document.getElementById('program-icon').src = `./assets/clock.png`;
+        newTab.querySelector('#tab-icon').src = `./assets/clock.png`;
+    }
+    document.getElementById('program-name').textContent = program;
     tabContainer.appendChild(newTab);
 
     const closeTabButton = newTab.querySelector('.right-0 img');
@@ -102,9 +122,6 @@ function runProgram(program) {
     multipWindow.style.display = "block";
     multipWindow.classList.remove('hidden');
     multipWindow.classList.add('flex', 'z-20');
-
-    document.getElementById('program-icon').src = `./assets/${program.toLowerCase()}.png`;
-    document.getElementById('program-name').textContent = program;
 
     const iframe = document.getElementById('window-iframe');
     iframe.src = getIframeSource(program);
