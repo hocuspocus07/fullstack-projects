@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./assets/win95icon.jpg" type="image/x-icon">
     <title>Starting up...</title>
+    <link rel="stylesheet" href="./css/input.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.0/themes/base/jquery-ui.css">
     <style>
         body,
         html {
@@ -17,6 +19,15 @@
             background-color: black;
             color: white;
             overflow: hidden;
+        }
+        
+        .startup-logo {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
         
         .startup-logo {
@@ -34,8 +45,8 @@
 </head>
 
 <body>
-    <div class="startup-logo">
-        <img src="./assets/windowslanding.png" alt="Windows 95 Logo">
+    <div class="startup-logo xs:w-screen xs:h-screen">
+        <img src="./assets/windowslanding.png" alt="Windows 95 Logo" class="w-screen h-screen">
         <p>Loading...</p>
     </div>
     <script>
