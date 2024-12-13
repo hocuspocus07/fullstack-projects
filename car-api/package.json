@@ -1,0 +1,26 @@
+{
+    "name": "car-api",
+    "version": "1.0.0",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "start": "node backend/index.js",
+        "dev": "nodemon backend/index.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "body-parser": "^1.20.3",
+        "cors": "^2.8.5",
+        "csv-parser": "^3.0.0",
+        "dotenv": "^16.4.7",
+        "express": "^4.21.2",
+        "fast-csv": "^5.0.2",
+        "mongoose": "^8.8.4"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.9"
+    }
+}
