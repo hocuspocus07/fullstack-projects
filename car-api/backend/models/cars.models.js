@@ -1,54 +1,63 @@
 import mongoose, { Schema } from "mongoose"
-import fs from "fs"
-import csv from "csv-parser"
 
-const carSchema = new Schema({}, { timestamps: true });
+const carSchema = new Schema({
+    MakeId: { type: String },
+    MakeName: { type: String },
+    ModelId: { type: String },
+    ModelName: { type: String },
+    TrimId: { type: String },
+    TrimYear: { type: String },
+    TrimName: { type: String },
+    TrimDescription: { type: String },
+    TrimMsrp: { type: String },
+    TrimInvoice: { type: String },
+    TrimCreated: { type: String },
+    TrimModified: { type: String },
+    EngineId: { type: String },
+    EngineType: { type: String },
+    EngineFuelType: { type: String },
+    EngineCylinders: { type: String },
+    EngineSize: { type: String },
+    EngineHorsepowerHp: { type: String },
+    EngineHorsepowerRpm: { type: String },
+    EngineTorqueFtLbs: { type: String },
+    EngineTorqueRpm: { type: String },
+    EngineValves: { type: String },
+    EngineValveTiming: { type: String },
+    EngineCamType: { type: String },
+    EngineDriveType: { type: String },
+    EngineTransmission: { type: String },
+    BodyId: { type: String },
+    BodyType: { type: String },
+    BodyDoors: { type: String },
+    BodySeats: { type: String },
+    BodyLength: { type: String },
+    BodyWidth: { type: String },
+    BodyHeight: { type: String },
+    BodyWheelBase: { type: String },
+    BodyFrontTrack: { type: String },
+    BodyRearTrack: { type: String },
+    BodyGroundClearance: { type: String },
+    BodyCargoCapacity: { type: String },
+    BodyMaxCargoCapacity: { type: String },
+    BodyCurbWeight: { type: String },
+    BodyGrossWeight: { type: String },
+    BodyMaxPayload: { type: String },
+    BodyMaxTowingCapacity: { type: String },
+    MileageId: { type: String },
+    MileageFuelTankCapacity: { type: String },
+    MileageCombinedMpg: { type: String },
+    MileageEpaCityMpg: { type: String },
+    MileageEpaHighwayMpg: { type: String },
+    MileageRangeCity: { type: String },
+    MileageRangeHighway: { type: String },
+    MileageEpaCombinedMpgElectric: { type: String },
+    MileageEpaCityMpgElectric: { type: String },
+    MileageEpaHighwayMpgElectric: { type: String },
+    MileageRangeElectric: { type: String },
+    MileageEpaKwh100MiElectric: { type: String },
+    MileageEpaTimeToChargeHr240vElectric: { type: String },
+    MileageBatteryCapacityElectric: { type: String },
+});
 
-const processModel = async(filePath) => {
-    return new Promise((resolve, reject) => {
-        let myHeaders = [];
-        const readStream = fs.createReadStream(filePath);
-        readStream
-            .pipe(csv())
-            .on('headers', (headers) => {
-                console.log(`Headers found in CSV: ${headers}`);
-                myHeaders = headers;
-
-                console.log("Schema before dynamic update:", carSchema.obj);
-                myHeaders.forEach((header) => {
-                    carSchema.add({
-                        [header]: { type: String, default: '' }
-                    });
-                });
-                console.log("Schema after dynamic update:", carSchema.obj);
-                resolve();
-            })
-            .on('error', (err) => {
-                console.log("Error occured:", err);
-                reject(err);
-            })
-            .on('end', () => {
-                console.log("CSV READING COMPLETED!");
-            })
-    })
-}
-
-(async() => {
-    const csvPath = '../data/carapi-opendatafeed-sample.csv';
-    try {
-        await processModel(csvPath);
-        const Car = mongoose.model("Car", carSchema);
-        console.log("MODEL CREATED SUCCESSFULLY WITH THESE ENTRIES:", carSchema.obj);
-    } catch (err) {
-        console.log("ERROR OCCURED: ", err);
-    }
-})();
-
-const addDynamicField = (fieldName, type) => {
-    carSchema.add({
-        [fieldName]: { type, default: type === String ? '' : null },
-    });
-    console.log(`Field "${fieldName}" added to schema as type "${type.name}"`);
-};
-
-export { addDynamicField };
+export const Car = mongoose.model('Car', carSchema);
