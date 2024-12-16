@@ -2,6 +2,7 @@ import express from "express"
 import cors from "cors"
 import dotenv from "dotenv"
 import { carRouter } from "./routes/cars.routes.js"
+import { userRouter } from "./routes/users.routes.js"
 
 dotenv.config({
     path: "../.env",
@@ -19,4 +20,5 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.static("public"));
 
 app.use('/api/cars', carRouter);
+app.use('/api/users', userRouter);
 export { app }
