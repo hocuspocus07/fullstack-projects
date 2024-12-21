@@ -28,3 +28,23 @@ export const registerUser = async(req, res) => {
         res.status(500).json({ message: 'Error registering user', error: error.message });
     }
 }
+
+export const loginUser = async(req, res) => {
+    try {
+        const { email, password } = req.body;
+        if (!password || !email) {
+            res.status(400).json({ message: "Please enter email and password." });
+        }
+        const user = await User.findOne({ email })
+        if (!user) {
+            res.status(401).json({ message: "User not found" });
+        }
+        const isPasswordValid = await user.isPasswordCorrect(password)
+        if (!isPasswordValid) {
+            res.status(401).json({ message: "Password is invalid" });
+        }
+        console.log("LOGIN SUCCESS!");
+    } catch (error) {
+        res.status(500).json({ message: 'ERROR OCCURED: ', error: error.message })
+    }
+}

@@ -20,7 +20,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static("public"));
 
+import rateLimit from 'express-rate-limit';
+
+const apiLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 100,
+    message: 'Too many requests, please try again later',
+});
+
+app.use('/api/', apiLimiter);
+
 app.use('/api/users', userRouter);
 app.use(verifyApiKey);
 app.use('/api/cars', carRouter);
+
 export { app }
