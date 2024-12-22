@@ -29,6 +29,19 @@ export const registerUser = async(req, res) => {
     }
 }
 
+const generateAccessAndRefreshToken = async(userId) => {
+    try {
+        const user = await User.findById(userId);
+        const accessToken = user.generateAccessToken();
+        const refreshToken = user.generateRefreshToken();
+        user.refreshToken = refreshToken;
+        await user.save({ validateBeforeSave: false })
+        return { accessToken, refreshToken };
+    } catch (error) {
+        res.status(500).json({ message: "CANNOT GET ACCESS AND REFRESH TOKEN: ", error: error.message })
+    }
+}
+
 export const loginUser = async(req, res) => {
     try {
         const { email, password } = req.body;
@@ -44,7 +57,37 @@ export const loginUser = async(req, res) => {
             res.status(401).json({ message: "Password is invalid" });
         }
         console.log("LOGIN SUCCESS!");
+
+        const { accessToken, refreshToken } = await generateAccessAndRefreshToken(user._id);
+        const loggedInUser = await User.findById(user._id).select("-password -refreshToken")
+        const options = {
+                httpOnly: true,
+                secure: true,
+            } //security step, stops modification of cookies from the frontend, can only be modified from server
+        return res.status(200).cookie("accessToken", accessToken, options).cookie("refreshToken", refreshToken, options)
+            .json({ user: loggedInUser, accessToken, refreshToken, message: "USER LOGGED IN SUCCESSFULLY" });
     } catch (error) {
         res.status(500).json({ message: 'ERROR OCCURED: ', error: error.message })
     }
+}
+
+export const logoutUser=async(req,res)=>{
+    await User.findByIdAndUpdate(
+        req.user._id,
+        {
+            $set:{
+                refreshToken:undefined
+            }
+        },{
+            new:true
+        }
+    )
+    const options={
+        httpOnly: true,
+        secure: true,
+    }
+
+    return res.status(200).clearCookie("accessToken",options)
+    .clearCookie("refreshToken",options)
+    .json({message:'USER LOGGED OUT SUCCESSFULLY'})
 }

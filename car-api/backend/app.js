@@ -4,6 +4,7 @@ import dotenv from "dotenv"
 import { carRouter } from "./routes/cars.routes.js"
 import { userRouter } from "./routes/users.routes.js"
 import { verifyApiKey } from "./middlewares/auth.middleware.js"
+import cookieParser  from "cookie-parser"
 
 dotenv.config({
     path: "../.env",
@@ -19,6 +20,7 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static("public"));
+app.use(cookieParser());
 
 import rateLimit from 'express-rate-limit';
 
