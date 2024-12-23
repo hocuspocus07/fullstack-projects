@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: car-api
+    env: node
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && npm start
+    rootDir: car-api
+    envVars:
+      - key: PORT
+        value: 3000
