@@ -1,15 +1,33 @@
 import { Car } from "../models/cars.models.js";
 
-const getCars = async(req, res) => {
+const getCars = async (req, res) => {
     try {
-        const filters = {...req.query };
+        const page = parseInt(req.query.page) || 1;
+        const limit = parseInt(req.query.limit) || 10;
+        const skip = (page - 1) * limit;
+
+        const filters = { ...req.query };
         delete filters.apiKey;
-        console.log("Filters being used in the query:", filters);
-        const cars = await Car.find(filters);
-        res.status(200).json(cars);
+        delete filters.page;
+        delete filters.limit;
+
+        const cars = await Car.aggregate([
+            { $match: filters },
+            { $skip: skip },
+            { $limit: limit },
+        ]);
+
+        const totalCars = await Car.countDocuments(filters);
+
+        res.status(200).json({
+            totalResults: totalCars,
+            totalPages: Math.ceil(totalCars / limit),
+            currentPage: page,
+            cars,
+        });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
-}
+};
 
 export { getCars };
