@@ -6,11 +6,13 @@ import Features from "../components/Features.jsx";
 function HomePage() {
   return (
     <>
-      <div className="bg-custom-bg bg-center bg-cover h-screen w-screen container m-0">
+    <div className="h-screen w-screen">
+      <div className="bg-custom-bg bg-center bg-cover m-0" style={{backgroundImage:"/assets/bg.jpg",backgroundPosition:"center",backgroundSize:"cover",}}>
         <NavBar />
         <HeroSection />
       </div>
       <Features />
+      </div>
     </>
   );
 }

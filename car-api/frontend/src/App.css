@@ -4,7 +4,7 @@
   padding: 2rem;
   text-align: center;
 }
-
+* { margin: 0; padding: 0; box-sizing: border-box;}
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -40,3 +40,5 @@
 .read-the-docs {
   color: #888;
 }
+
+.full-width { margin: 0 !important; padding: 0 !important; }

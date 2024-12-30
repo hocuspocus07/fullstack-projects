@@ -27,11 +27,11 @@ function Features() {
       }
   ];
   return (
-    <div className="h-full w-full bg-black text-white">
-      <Row xs={1} md={2} className="g-4">
+    <div className="h-full w-screen flex justify-center items-center bg-black text-white">
+      <Row xs={1} md={2} className="g-4 w-full max-w-7xl">
         {cardsData.map((card, idx) => (
-          <Col key={idx}>
-            <Card className="h-60 w-3/4">
+          <Col key={idx} className="d-flex justify-content-center">
+            <Card className="h-60 w-2/3">
               <Card.Img variant="top" src={card.src} style={{
                   objectFit: "cover",
                   height: "100%",
@@ -40,9 +40,9 @@ function Features() {
                   left: 0,
                   right: 0,
                   bottom: 0,
-                  filter: "brightness(0.9)",
+                  filter: "brightness(0.7)",
                   borderRadius:"0.3rem",
-                }} className="hover:brightness-0"/>
+                }} className="hover:brightness-0 hover:cursor-pointer"/>
               <Card.Body style={{
                   position: "absolute",
                   top: "50%",
