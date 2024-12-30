@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 
 function NavBar() {
   return (
-      <Navbar className="bg-black text-white w-full fixed top-0 left-0 h-16 text-lg">
+      <Navbar className="bg-black text-white w-full fixed top-0 left-0 h-16 text-lg z-10">
         <Container>
           <Navbar.Brand href="#home" className='text-white text-2xl'>Vrooom<span className='text-[#FFD700]'>API</span></Navbar.Brand>
           <Nav className="me-auto">

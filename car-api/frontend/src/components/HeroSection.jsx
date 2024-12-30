@@ -6,9 +6,9 @@ function HeroSection() {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [blink, setBlink] = useState(true);
-  const typingSpeed = 200; // Speed of typing in ms
-  const deletingSpeed = 100; // Speed of deleting in ms
-  const pauseDuration = 1000; // Pause between words in ms
+  const typingSpeed = 200;
+  const deletingSpeed = 100; 
+  const pauseDuration = 1000; 
 
   useEffect(() => {
     const handleTyping = () => {
@@ -46,9 +46,9 @@ function HeroSection() {
   }, []);
   return (
       <section className="h-screen w-screen flex flex-col justify-center items-start px-40 text-white">
-        <span className="text-7xl text-[#FFD700]">VrooomAPI - {text}
+        <span className="text-7xl mt-10 text-[#FFD700]">VrooomAPI - {text}
         <span className={`ml-1 ${blink ? "opacity-100" : "opacity-0"} text-white`}>|</span></span>
-        <p className="mt-3 text-xl max-w-2xl">
+        <p className="mt-10 text-xl max-w-2xl">
           Revolutionize your driving experience with our cutting-edge car API
           solutions. Seamless integration, instant access—start developing right
           after signing up and unlock your API key today!

@@ -75,3 +75,22 @@ body, html {
   top: 0;
   overflow-x: hidden;
 }
+::-webkit-scrollbar {
+  width: 10px;
+  z-index: 100;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: black;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
