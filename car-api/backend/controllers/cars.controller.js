@@ -11,8 +11,12 @@ const getCars = async (req, res) => {
         delete filters.page;
         delete filters.limit;
 
+        const regexFilters = {};
+        for (const key in filters) {
+            regexFilters[key] = { $regex: filters[key], $options: "i" }; // 'i' for case-insensitivity
+        }
         const cars = await Car.aggregate([
-            { $match: filters },
+            { $match: regexFilters},
             { $skip: skip },
             { $limit: limit },
         ]);
