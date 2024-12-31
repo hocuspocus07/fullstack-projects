@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import NavBar from '../components/Navbar';
 import { filterOptions } from '../components/FilterOptions.js';
+import NavBar from '../components/Navbar.jsx';
 
 export function UserDashboard() {
     const [selectedFilterList, setSelectedFilterList] = useState([]);
@@ -110,11 +110,19 @@ export function UserDashboard() {
         console.log('Updated URL:', newUrl);
         document.getElementById('filter').value=""
     }
+    const resetFilters = () => {
+        setcurrenturl(`https://car-api-o2p5.onrender.com/api/cars?apiKey=${user.apiKey}`);
+        setSelectedFilterList([]);
+        document.getElementById('filter').value = "";
+        setSelectedFilter('');
+        const iframe = document.getElementById('display');
+        iframe.src = `https://car-api-o2p5.onrender.com/api/cars?apiKey=${user.apiKey}`;
+    };
     
     
     return (
         <>
-            <NavBar />
+        <NavBar/>
             <div className="flex items-start justify-between min-h-screen bg-custom-bg bg-cover bg-center w-screen p-8">
                 {/* Left Section: User Dashboard */}
                 <div className="bg-white bg-opacity-10 backdrop-blur-lg rounded-lg shadow-lg w-1/3 h-screen p-8">
@@ -162,13 +170,19 @@ export function UserDashboard() {
                     <h3 className='my-1 text-white text-left'>Test your filters here:</h3>
                     <div className='flex'>
                         <input type="text" id="filter"
-                            className="w-full h-6 m-1" />
-                        <button onClick={submitFilters} className='h-7 w-32 flex items-center justify-center'>Apply</button>
+                            className="w-full h-8 px-4 py-2 border rounded-md" placeholder='enter your filter parameter(eg. toyota for Make Name)'/>
+                        <button onClick={submitFilters} className='mr-2 ml-2 h-8 w-32 hover:scale-105 transition-all duration-300 ease-in-out hover:bg-blue-900 bg-blue-500 text-white rounded-md flex items-center justify-center'>Apply</button>
+                        <button 
+    onClick={resetFilters} 
+    className='hover:scale-105 transition-all duration-300 ease-in-out hover:bg-gray-900 h-8 w-32 bg-gray-500 text-white rounded-md flex items-center justify-center'
+>
+    Reset
+</button>
                     </div>
                     <select 
         value={selectedFilter} 
         onChange={handleFilterChange} 
-        className="w-60 px-4 py-2 border rounded-md"
+        className="w-60 px-4 py-2 border rounded-md mt-3"
       >
         <option value="">Select a filter...</option>
         {filterOptions.map((option, index) => (
@@ -177,7 +191,7 @@ export function UserDashboard() {
           </option>
         ))}
       </select>
-      <div className="mt-4 text-white"><p>Applied filters: <small>(apply them one by one)</small><p> <ul>
+      <div className="mt-2 text-white"><p>Applied filters: <small>(apply them one by one)</small><p> <ul>
                             {selectedFilterList.map((filter, index) => (
                                 <li key={index}>{filter.replace(/\+/g, ' ')}</li>
                             ))}
