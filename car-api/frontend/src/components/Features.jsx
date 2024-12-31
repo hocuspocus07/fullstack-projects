@@ -29,7 +29,7 @@ function Features() {
   ];
 
   return (
-    <div className="w-screen bg-black text-white py-16">
+    <div className="w-screen bg-black text-white xs:py-0 cs:py-0 py-16">
       <div className="w-3/4 mx-auto">
         <Row xs={1} sm={2} md={2} lg={4} className="g-6">
           {cardsData.map((card, idx) => (

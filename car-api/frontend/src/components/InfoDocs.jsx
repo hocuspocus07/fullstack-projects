@@ -36,10 +36,10 @@ export function InfoDocs() {
   
   
   return (
-    <div className="h-full w-screen bg-gray-900 text-white flex">
-      <div className="h-full w-screen bg-gray-900 text-white flex">
+    <div className="h-full w-screen bg-gray-900 text-white xs:flex-col flex">
+      <div className="h-full w-screen bg-gray-900 text-white xs:flex-col flex">
         {/* Main Content */}
-        <div className="w-2/3 p-20 overflow-y-auto">
+        <div className="w-2/3 p-20 overflow-y-auto xs:w-screen cs:w-screen">
           <h1 className="text-4xl font-bold text-[#FFD700]">
             API Documentation
           </h1>
@@ -403,8 +403,8 @@ export function InfoDocs() {
           </div>
         </div>
       {/* Table of Contents Sidebar */}
-        <div className="w-1/4 pt-40 bg-gray-800 fixed right-0 h-full overflow-y-auto">
-        <h2 className="text-xl font-bold text-[#FFD700] mb-4">Table of Contents</h2>
+      <div className="w-1/4 pt-40 bg-gray-800 lg:fixed lg:h-full xs:bottom-0 xs:left-0 xs:w-full cs:absolute right-0 overflow-y-auto">
+      <h2 className="text-xl font-bold text-[#FFD700] mb-4">Table of Contents</h2>
         <ul className="space-y-2 text-sm">
           <li><a href="#base-url" className="hover:text-[#FFD700]">Base URL</a></li>
           <li><a href="#authentication" className="hover:text-[#FFD700]">Authentication & Authorization</a></li>

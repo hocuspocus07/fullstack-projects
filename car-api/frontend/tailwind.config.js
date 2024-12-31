@@ -10,6 +10,10 @@ export default {
         'custom-bg': "url('/assets/bg.jpg')",
         'custom-about-bg':"url('/assets/about.jpg')",
       },
+      screens: {
+        'xs': { 'min': '300px', 'max': '800px' },
+        'cs': { 'min': '801px', 'max': '1024px' },
+    },
     },
   },
   plugins: [],
