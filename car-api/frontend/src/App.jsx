@@ -6,6 +6,7 @@ import { Documentation } from "./pages/Documentation.jsx";
 import { Login } from "./pages/Login.jsx";
 import { Signup } from "./pages/Signup.jsx";
 import { UserDashboard } from "./pages/UserDashboard.jsx";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
 
 function App() {
   return (
@@ -15,7 +16,11 @@ function App() {
           <Route path="docs" element={<Documentation />} />
           <Route path="login" element={<Login/>} />
           <Route path="register" element={<Signup />} />
-          <Route path="dashboard" element={<UserDashboard/>}/>
+          <Route path="dashboard" element={
+            <ProtectedRoute>
+              <UserDashboard />
+            </ProtectedRoute>
+          }/>
       </Routes>
     </BrowserRouter>
   );

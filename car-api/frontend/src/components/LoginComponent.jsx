@@ -12,11 +12,11 @@ export function LoginComponent() {
     e.preventDefault();
     try {
       const response = await loginUser({ email, password });
-      const { accessToken, apiKey, user } = response.data;
+      const { accessToken, user } = response.data;
+      console.log(response.data);
       localStorage.setItem('user', JSON.stringify(user));
       localStorage.setItem('apiKey',user.apiKey);
       localStorage.setItem('authToken', accessToken);
-      console.log(user.apiKey);
       navigate('/dashboard'); // Redirect to dashboard after successful login
     } catch (err) {
       setError(err.response?.data?.message || 'Invalid login credentials');
