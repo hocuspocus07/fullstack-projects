@@ -89,6 +89,19 @@ export const loginUser = async (req, res) => {
   }
 };
 
+export const getUserData = async (req, res) => {
+  try {
+    const user = req.user; 
+    
+    res.json({
+      email: user.email,
+      name: user.name,
+      apiKey: user.apiKey, 
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch user data" });
+  }
+};
 export const logoutUser = async (req, res) => {
   await User.findByIdAndUpdate(
     req.user._id,
