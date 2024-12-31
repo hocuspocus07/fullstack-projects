@@ -96,7 +96,8 @@ export const getUserData = async (req, res) => {
     res.json({
       email: user.email,
       name: user.name,
-      apiKey: user.apiKey, 
+      apiKey: user.apiKey,
+      createdAt:user.createdAt, 
     });
   } catch (error) {
     res.status(500).json({ message: "Failed to fetch user data" });
