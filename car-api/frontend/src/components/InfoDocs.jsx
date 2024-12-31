@@ -196,24 +196,95 @@ export function InfoDocs() {
                 </p>
                 <h4 className="text-lg font-medium mt-4">Query Parameters:</h4>
                 <p className="mt-2 text-sm">
-                  <code>page</code>: The page number (default: 1).
-                  <br />
-                  <code>limit</code>: The number of results per page (default:
-                  10).
-                  <br />
-                  Other optional filters (e.g., make, model, etc.) can be added
-                  as query parameters.
-                </p>
-                <h4 className="text-lg font-medium mt-4">Example:</h4>
-                <pre className="bg-gray-800 p-4 rounded-md text-sm relative">
-                  {`/api/cars?page=2&limit=5&make=Toyota`}<span className="absolute top-2 right-2 text-xl hover:cursor-pointer" onClick={(event) => copyCode(event)}><ion-icon name="clipboard-outline"></ion-icon></span>
-                </pre>
-                <h4 className="text-lg font-medium mt-4">Response:</h4>
-                <pre className="bg-gray-800 p-4 rounded-md text-sm relative">
-                  {`{
+      <code>apiKey</code>: Required API key for authentication.
+      <br />
+      <code>page</code>: The page number (default: 1).
+      <br />
+      <code>limit</code>: The number of results per page (default: 10).
+      <br />
+      <code>Make+Name</code>: Filter by make name (e.g., Toyota, Honda).
+      <br />
+      <code>Model+Name</code>: Filter by model name.
+      <br />
+      Additional filters can be added as query parameters (details below).
+    </p>
+    <h4 className="text-lg font-medium mt-4">Available Filters:</h4>
+    <ul className="mt-2 text-sm list-disc list-inside">
+      <li>Make Id</li>
+      <li>Make Name</li>
+      <li>Model Id</li>
+      <li>Model Name</li>
+      <li>Trim Id</li>
+      <li>Trim Year</li>
+      <li>Trim Name</li>
+      <li>Trim Description</li>
+      <li>Trim Msrp</li>
+      <li>Trim Invoice</li>
+      <li>Trim Created</li>
+      <li>Trim Modified</li>
+      <li>Engine Id</li>
+      <li>Engine Type</li>
+      <li>Engine Fuel Type</li>
+      <li>Engine Cylinders</li>
+      <li>Engine Size</li>
+      <li>Engine Horsepower Hp</li>
+      <li>Engine Horsepower Rpm</li>
+      <li>Engine Torque Ft Lbs</li>
+      <li>Engine Torque Rpm</li>
+      <li>Engine Valves</li>
+      <li>Engine Valve Timing</li>
+      <li>Engine Cam Type</li>
+      <li>Engine Drive Type</li>
+      <li>Engine Transmission</li>
+      <li>Body Id</li>
+      <li>Body Type</li>
+      <li>Body Doors</li>
+      <li>Body Seats</li>
+      <li>Body Length</li>
+      <li>Body Width</li>
+      <li>Body Height</li>
+      <li>Body Wheel Base</li>
+      <li>Body Front Track</li>
+      <li>Body Rear Track</li>
+      <li>Body Ground Clearance</li>
+      <li>Body Cargo Capacity</li>
+      <li>Body Max Cargo Capacity</li>
+      <li>Body Curb Weight</li>
+      <li>Body Gross Weight</li>
+      <li>Body Max Payload</li>
+      <li>Body Max Towing Capacity</li>
+      <li>Mileage Id</li>
+      <li>Mileage Fuel Tank Capacity</li>
+      <li>Mileage Combined Mpg</li>
+      <li>Mileage Epa City Mpg</li>
+      <li>Mileage Epa Highway Mpg</li>
+      <li>Mileage Range City</li>
+      <li>Mileage Range Highway</li>
+      <li>Mileage Epa Combined Mpg</li>
+      <li>Electric Mileage</li>
+      <li>Electric Mileage Epa City Mpg</li>
+      <li>Electric Mileage Epa Highway Mpg</li>
+      <li>Electric Mileage Range</li>
+      <li>Electric Mileage Epa Kwh 100 Mi</li>
+      <li>Electric Mileage Epa Time To Charge Hr 240v</li>
+      <li>Electric Mileage Battery Capacity</li>
+    </ul>
+    <h4 className="text-lg font-medium mt-4">Example:</h4>
+    <pre className="bg-gray-800 p-4 rounded-md text-sm relative">
+      {`/api/cars?apiKey=your-api-key&Make+Name=Toyota&Trim+Year=2020`}
+      <span
+        className="absolute top-2 right-2 text-xl hover:cursor-pointer"
+        onClick={(event) => copyCode(event)}
+      >
+        <ion-icon name="clipboard-outline"></ion-icon>
+      </span>
+    </pre>
+    <h4 className="text-lg font-medium mt-4">Response:</h4>
+    <pre className="bg-gray-800 p-4 rounded-md text-sm relative">
+      {`{
   "totalResults": 100,
   "totalPages": 10,
-  "currentPage": 2,
+  "currentPage": 1,
   "cars": [
     {
       "MakeId": "1",
@@ -227,8 +298,15 @@ export function InfoDocs() {
     }
   ]
 }`}
-                <span className="absolute top-2 right-2 text-xl hover:cursor-pointer" onClick={(event) => copyCode(event)}><ion-icon name="clipboard-outline"></ion-icon></span></pre>
-              </div>
+      <span
+        className="absolute top-2 right-2 text-xl hover:cursor-pointer"
+        onClick={(event) => copyCode(event)}
+      >
+        <ion-icon name="clipboard-outline"></ion-icon>
+      </span>
+    </pre>
+</div>
+              
             </section>
 
             {/* Middleware & Authorization */}
