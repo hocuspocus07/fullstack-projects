@@ -1,5 +1,5 @@
 import React from 'react'
-import NavBar from '../components/Navbar.jsx'
+import NavBar from '../components/NavBar.jsx'
 import { SignupComponent } from '../components/SIgnupComponent.jsx'
 
 export function Signup() {

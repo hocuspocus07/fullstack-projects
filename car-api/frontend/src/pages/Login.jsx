@@ -1,5 +1,5 @@
 import React from 'react'
-import NavBar from '../components/Navbar.jsx'
+import NavBar from '../components/NavBar.jsx'
 import { LoginComponent } from '../components/LoginComponent.jsx'
 
 export function Login() {

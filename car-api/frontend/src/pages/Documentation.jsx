@@ -1,6 +1,6 @@
 import React from 'react'
 import { InfoDocs } from '../components/InfoDocs.jsx'
-import NavBar from '../components/Navbar.jsx'
+import NavBar from '../components/NavBar.jsx'
 
 export function Documentation() {
   return (

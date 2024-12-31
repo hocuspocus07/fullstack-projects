@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { filterOptions } from '../components/FilterOptions.js';
-import NavBar from '../components/Navbar.jsx';
+import NavBar from '../components/NavBar.jsx';
 
 export function UserDashboard() {
     const [selectedFilterList, setSelectedFilterList] = useState([]);

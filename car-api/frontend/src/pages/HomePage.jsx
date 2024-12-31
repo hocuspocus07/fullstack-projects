@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "../components/Navbar.jsx";
+import NavBar from "../components/NavBar.jsx";
 import HeroSection from "../components/HeroSection.jsx";
 import Features from "../components/Features.jsx";
 import About from "../components/About.jsx";
