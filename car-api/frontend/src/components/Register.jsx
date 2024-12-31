@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { registerUser } from '../api';
 import { useNavigate } from 'react-router-dom';
 
-export const SignUpComponent = () => {
+const Register = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -68,3 +68,5 @@ export const SignUpComponent = () => {
 </div>
   );
 };
+
+export default Register;
