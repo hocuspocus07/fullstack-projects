@@ -13,10 +13,10 @@ function App() {
     <BrowserRouter>
       <Routes>
           <Route index element={<HomePage />} />
-          <Route path="docs" element={<Documentation />} />
-          <Route path="login" element={<Login/>} />
-          <Route path="register" element={<Signup />} />
-          <Route path="dashboard" element={
+          <Route path="/docs" element={<Documentation />} />
+          <Route path="/login" element={<Login/>} />
+          <Route path="/register" element={<Signup />} />
+          <Route path="/dashboard" element={
             <ProtectedRoute>
               <UserDashboard />
             </ProtectedRoute>
