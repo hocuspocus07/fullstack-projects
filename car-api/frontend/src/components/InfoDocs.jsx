@@ -16,7 +16,15 @@ export function InfoDocs() {
       console.error('Code block not found!');
     }
   }
-  
+  function copyUrl(){
+    const url=document.getElementById('url');
+    const urlText=url.innerText;
+    navigator.clipboard.writeText(urlText).then(() => {
+      alert('Code copied to clipboard!');
+    }).catch(err => {
+      console.error('Failed to copy text: ', err);
+    });
+  }
   
   
   return (
@@ -42,7 +50,7 @@ export function InfoDocs() {
                 Base URL
               </h2>
               <p className="bg-gray-800 p-3 rounded-md inline-block">
-                <code>/api</code>
+                <code id="url">https://car-api-o2p5.onrender.com/api</code><span className="text-xl hover:cursor-pointer" onClick={copyUrl}><ion-icon name="clipboard-outline"></ion-icon></span>
               </p>
             </section>
 
