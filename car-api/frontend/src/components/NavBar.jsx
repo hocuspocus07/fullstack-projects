@@ -14,7 +14,7 @@ function NavBar() {
             <Nav.Link as={Link} to="/docs" className="hover:text-[#6200EA] text-white">Documentation</Nav.Link>
             <Nav.Link as={Link} to="/login" className="hover:text-[#6200EA] text-white">Login</Nav.Link>
           </Nav>
-          <Button variant="primary">Sign up</Button>
+          <Button href='/register' variant="primary">Sign up</Button>
         </Container>
       </Navbar>
   );
