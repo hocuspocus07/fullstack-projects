@@ -1,6 +1,8 @@
-import React from "react";
+import React,{useState} from "react";
+import Alert from "./Alert.jsx";
 
 export function InfoDocs() {
+  const [alert, setAlert] = useState(null);
   function copyCode(event) {
     // Find the closest <pre> tag relative to the clicked element
     const codeBlock = event.target.closest('pre');
@@ -8,21 +10,27 @@ export function InfoDocs() {
     if (codeBlock) {
       const text = codeBlock.innerText;
       navigator.clipboard.writeText(text).then(() => {
-        alert('Code copied to clipboard!');
+        setAlert({ variant: 'success', message: 'Code copied to clipboard!' });
+        setTimeout(() => setAlert(null), 3000);
       }).catch(err => {
         console.error('Failed to copy text: ', err);
+        setAlert({ variant: 'danger', message: 'Failed to copy code!' });
+        setTimeout(() => setAlert(null), 3000);
       });
     } else {
       console.error('Code block not found!');
-    }
-  }
+      setAlert({ variant: 'danger', message: 'Code block not found!' });
+      setTimeout(() => setAlert(null), 1000);
+    }}
+
   function copyUrl(){
     const url=document.getElementById('url');
     const urlText=url.innerText;
     navigator.clipboard.writeText(urlText).then(() => {
-      alert('Code copied to clipboard!');
+      setAlert({ variant: 'success', message: 'URL copied to clipboard!' });
     }).catch(err => {
       console.error('Failed to copy text: ', err);
+      setAlert({ variant: 'danger', message: 'Failed to copy URL!' });
     });
   }
   
@@ -41,7 +49,7 @@ export function InfoDocs() {
             principles and offers functionality for registering, logging in
             users, fetching car data, and user authentication.
           </p>
-
+          {alert && <Alert variant={alert.variant} message={alert.message} onClose={() => setAlert(null)} />}
           {/* Sections */}
           <div className="space-y-12 text-base leading-relaxed">
             {/* Base URL Section */}
