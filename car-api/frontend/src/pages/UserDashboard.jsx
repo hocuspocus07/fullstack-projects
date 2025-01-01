@@ -183,7 +183,7 @@ export function UserDashboard() {
         <iframe id="display"
             src={currenturl} // Replace with the actual URL for API usage tracking
             title="API Usage"
-            className="bg-white xs:text-black w-full h-96 rounded-lg border border-gray-300"
+            className=" xs:text-black bg-gray-400 w-full h-96 rounded-lg border border-gray-300"
         ></iframe>
         <h3 className='my-1 text-white text-left xs:text-sm'>Test your filters here:</h3>
         <div className='flex flex-col md:flex-row'>
