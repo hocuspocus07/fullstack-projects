@@ -3,7 +3,7 @@ import axios from 'axios';
 function ContactComponent() {
   async function submitContactForm(formData) {
     try {
-      const response = await axios.post('http://localhost:5000/api/contact', formData);
+      const response = await axios.post('https://car-api-o2p5.onrender.com/api/contact', formData);
       alert(response.data.message);
     } catch (error) {
       console.error('Error submitting contact form:', error);
@@ -24,7 +24,7 @@ function ContactComponent() {
         <p className="text-lg mb-6 text-gray-300 text-center">
           We'd love to hear from you! Fill out the form below, and we'll get back to you soon.
         </p>
-        <form className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div className="flex items-center">
             <label htmlFor="name" className="flex items-center justify-center text-lg font-medium text-white w-50">
             <ion-icon name="person-outline"></ion-icon>&nbsp;
@@ -65,7 +65,6 @@ function ContactComponent() {
             <button
               type="submit"
               className="w-full px-4 py-2 text-white bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg hover:from-blue-600 hover:to-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500"
-              onClick={handleSubmit}
             >
               Submit
             </button>
