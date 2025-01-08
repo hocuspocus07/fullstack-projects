@@ -1,9 +1,13 @@
-import React from 'react'
+import React,{useState} from 'react'
 import axios from 'axios';
+import { contactUs } from '../api';
 function ContactComponent() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
   async function submitContactForm(formData) {
     try {
-      const response = await axios.post('https://car-api-o2p5.onrender.com/api/contact', formData);
+      const response = await contactUs(formData);
       alert(response.data.message);
     } catch (error) {
       console.error('Error submitting contact form:', error);
@@ -33,6 +37,8 @@ function ContactComponent() {
             <input
               type="text"
               id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               className="bg-opacity-10 backdrop-blur-lg bg-white shadow-sm w-full ml-2 p-2 mt-1 text-black rounded-md focus:ring-2 focus:ring-[#FFD700] focus:outline-none"
               placeholder="Enter your name"
             />
@@ -45,6 +51,8 @@ function ContactComponent() {
             <input
               type="email"
               id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="bg-opacity-10 backdrop-blur-lg bg-white shadow-sm w-full  ml-2 p-2 mt-1 text-black rounded-md focus:ring-2 focus:ring-[#FFD700] focus:outline-none"
               placeholder="Enter your email"
             />
@@ -56,6 +64,8 @@ function ContactComponent() {
             </label>
             <textarea
               id="message"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
               rows="4"
               className="bg-opacity-10 backdrop-blur-lg bg-white shadow-sm w-full ml-2 p-2 mt-1 text-black rounded-md focus:ring-2 focus:ring-[#FFD700] focus:outline-none"
               placeholder="Enter your message"
