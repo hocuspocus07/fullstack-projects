@@ -19,7 +19,7 @@ function NavBar() {
         </Navbar.Brand>
 
         {/* Navbar Toggle */}
-        <Navbar.Toggle aria-controls="basic-navbar-nav" className="bg-[#6200EA]"/>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" className="bg-[#6200EA]" />
 
         {/* Navbar Collapse */}
         <Navbar.Collapse className='xs:bg-gray-800' id="basic-navbar-nav">
@@ -37,6 +37,10 @@ function NavBar() {
                 Login
               </Nav.Link>
             )}
+
+            <Nav.Link as={Link} to="/contact" className="hover:text-[#6200EA] text-white">
+              Contact Us
+            </Nav.Link>
 
             {isLoggedIn() && (location.pathname === '/docs' || location.pathname === '/') && (
               <Nav.Link as={Link} to="/dashboard" className="hover:text-[#6200EA] text-white">
