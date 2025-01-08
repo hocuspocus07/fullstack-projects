@@ -1,4 +1,7 @@
+import { Router } from 'express';
 import { postMessage } from '../controllers/contact.controller.js';
 
 const contactRouter=Router();
-contactRouter.post('/contact',postMessage);
+contactRouter.post('/',postMessage);
+
+export {contactRouter};

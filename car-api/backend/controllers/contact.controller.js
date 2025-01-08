@@ -1,4 +1,4 @@
-import contactModels from "../models/contact.models.js";
+import {Contact} from "../models/contact.models.js";
 
 export const postMessage=async (req,res)=>{
     const { name, email, message } = req.body;

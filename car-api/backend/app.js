@@ -3,6 +3,7 @@ import cors from "cors"
 import dotenv from "dotenv"
 import { carRouter } from "./routes/cars.routes.js"
 import { userRouter } from "./routes/users.routes.js"
+import { contactRouter } from "./routes/contact.routes.js"
 import { verifyApiKey } from "./middlewares/auth.middleware.js"
 import cookieParser  from "cookie-parser"
 
@@ -35,10 +36,8 @@ const apiLimiter = rateLimit({
     },
 });
 
-app.use('/api/', apiLimiter);
-
+app.use('/api/contact',contactRouter);
 app.use('/api/users', userRouter);
-app.use(verifyApiKey);
-app.use('/api/cars', carRouter);
+app.use('/api/cars', verifyApiKey,apiLimiter, carRouter);
 
 export { app }
