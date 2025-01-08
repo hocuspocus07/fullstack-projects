@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://car-api-o2p5.onrender.com/api', // Your backend API URL
+  baseURL: 'https://car-api-o2p5.onrender.com/api' ||'https://localhost:5173', // Your backend API URL
   withCredentials: true, // Send cookies with requests
 });
 
@@ -24,3 +24,8 @@ export const getCars = (params) => {
 export const refreshAccessToken = (refreshToken) => {
   return api.post('/users/refresh-token', { refreshToken });
 };
+
+//contact form 
+export const contactUs=(userData)=>{
+  return api.post('/contact', {userData});
+}
