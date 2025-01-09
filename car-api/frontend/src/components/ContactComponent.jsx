@@ -23,7 +23,7 @@ function ContactComponent() {
   return (
     <>
     <div className="bg-custom-bg bg-cover bg-center h-screen w-screen flex justify-center items-center text-white">
-      <div className="w-11/12 sm:w-3/4 md:w-1/2 lg:w-1/3 p-6 bg-opacity-10 bg-white backdrop-blur-lg rounded-lg shadow-lg">
+      <div className="w-11/12 sm:w-3/4 md:w-1/2 lg:w-1/3 p-6 bg-opacity-10 bg-white backdrop-blur-lg rounded-lg shadow-lg animate-float">
         <h2 className="text-2xl font-bold mb-4 text-white text-center">CONTACT US</h2>
         <p className="text-lg mb-6 text-gray-300 text-center">
           We'd love to hear from you! Fill out the form below, and we'll get back to you soon.

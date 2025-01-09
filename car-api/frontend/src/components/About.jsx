@@ -12,7 +12,7 @@ function About() {
         </p>
       </section>
       
-      <div className="flex flex-col lg:flex-row justify-start lg:justify-end w-full sm:px-16 space-y-6 lg:space-y-0 lg:space-x-6">
+      <div className="flex flex-col lg:flex-row justify-start lg:justify-end w-full sm:px-16 space-y-6 lg:space-y-0 lg:space-x-6 animate-float">
         <div className="lg:w-1/3 py-6 rounded-lg border border-white px-4 sm:px-6 shadow-lg">
           <h2 className="text-2xl sm:text-3xl font-semibold mb-4 text-white">Getting Started</h2>
           <ol className="list-decimal list-inside text-gray-300 space-y-2 text-lg sm:text-xl">

@@ -4,10 +4,10 @@ import ContactComponent from '../components/ContactComponent.jsx'
 
 function Contact() {
   return (
-    <>
+    <div className='flex h-screen w-screen flex-col'>
     <NavBar/>
     <ContactComponent/>
-    </>
+    </div>
   )
 }
 

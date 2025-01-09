@@ -1,5 +1,7 @@
 import React,{useState} from "react";
 import Alert from "./Alert.jsx";
+import { filterOptions } from "./FilterOptions.js";
+import { motion } from "framer-motion";
 
 export function InfoDocs() {
   const [alert, setAlert] = useState(null);
@@ -53,14 +55,20 @@ export function InfoDocs() {
           {/* Sections */}
           <div className="space-y-12 text-base leading-relaxed">
             {/* Base URL Section */}
-            <section id="base-url">
-              <h2 className="text-2xl font-semibold text-[#FFD700] mb-2">
-                Base URL
-              </h2>
+            <motion.section 
+              id="base-url" 
+              className="section" 
+              initial={{ opacity: 0,x:-50 }} 
+              whileInView={{ opacity: 1, x: 0 }} 
+              viewport={{ once: false,amount:0.5 }}
+              transition={{ duration: 0.8 }}
+            >
+              <h2 className="text-2xl font-semibold text-[#FFD700] mb-2">Base URL</h2>
               <p className="bg-gray-800 p-3 rounded-md inline-block">
-                <code id="url">https://car-api-o2p5.onrender.com/api</code><span className="text-xl hover:cursor-pointer" onClick={copyUrl}><ion-icon name="clipboard-outline"></ion-icon></span>
+                <code id="url">https://car-api-o2p5.onrender.com/api</code>
+                <span className="text-xl hover:cursor-pointer" onClick={copyUrl}><ion-icon name="clipboard-outline"></ion-icon></span>
               </p>
-            </section>
+            </motion.section>
 
             {/* Authentication Section */}
             <section id="authentication">
@@ -101,22 +109,23 @@ export function InfoDocs() {
                   </p>
                   <p>Registers a new user in the system.</p>
                   <h4 className="text-lg font-medium mt-4">Request Body:</h4>
-                  <pre className="bg-gray-800 p-4 rounded-md text-sm justify-start items-start relative">{`{
-  "name": "John Doe",
-  "password": "password123",
-  "email": "johndoeexample@gmail.com"
-}`}<span className="absolute top-2 right-2 text-xl hover:cursor-pointer" onClick={(event) => copyCode(event)}><ion-icon name="clipboard-outline"></ion-icon></span></pre>
+                  <pre className="bg-gray-800 p-4 rounded-md text-sm text-left justify-start items-start relative transition-transform duration-300 ease-in-out hover:scale-105">
+                  {` {
+        "name": "John Doe",
+        "password": "password123",
+        "email": "johndoeexample@gmail.com"
+  }`}<span className="absolute top-2 right-2 text-xl hover:cursor-pointer transform transition duration-300 ease-in-out hover:scale-110" onClick={(event) => copyCode(event)}><ion-icon name="clipboard-outline"></ion-icon></span></pre>
                   <h4 className="text-lg font-medium mt-4">Response:</h4>
-                  <pre className="bg-gray-800 p-4 rounded-md text-sm relative">
-                    {`{
-  "user": {
-    "name": "John Doe",
-    "email": "john.doe@example.com",
-    "apiKey": "some-generated-api-key"
-  },
-  "message": "User registered successfully"
-}`}
-                  <span className="absolute top-2 right-2 text-xl hover:cursor-pointer" onClick={(event) => copyCode(event)}><ion-icon name="clipboard-outline"></ion-icon></span></pre>
+                  <pre className="bg-gray-800 p-4 rounded-md text-sm text-left justify-start items-start relative transition-transform duration-300 ease-in-out hover:scale-105">
+                  {`  {
+        "user": {
+              "name": "John Doe",
+              "email": "john.doe@example.com",
+              "apiKey": "some-generated-api-key"
+        },
+        "message": "User registered successfully"
+    }`}
+                  <span className="absolute top-2 right-2 text-xl hover:cursor-pointer transform transition duration-300 ease-in-out hover:scale-110" onClick={(event) => copyCode(event)}><ion-icon name="clipboard-outline"></ion-icon></span></pre>
                 </div>
                 <div>
                   <h3 className="text-lg font-medium">2. Login User</h3>
@@ -128,24 +137,24 @@ export function InfoDocs() {
                     access and refresh tokens.
                   </p>
                   <h4 className="text-lg font-medium mt-4">Request Body:</h4>
-                  <pre className="bg-gray-800 p-4 rounded-md text-sm relative">
-                    {`{
-  "email": "john.doe@example.com",
-  "password": "password123"
-}`}
-                  <span className="absolute top-2 right-2 text-xl hover:cursor-pointer" onClick={(event) => copyCode(event)}><ion-icon name="clipboard-outline"></ion-icon></span></pre>
+                  <pre className="bg-gray-800 p-4 rounded-md text-sm text-left justify-start items-start relative transition-transform duration-300 ease-in-out hover:scale-105">
+                  {`    {
+          "email": "john.doe@example.com",
+          "password": "password123"
+    }`}
+                  <span className="absolute top-2 right-2 text-xl hover:cursor-pointer transform transition duration-300 ease-in-out hover:scale-110" onClick={(event) => copyCode(event)}><ion-icon name="clipboard-outline"></ion-icon></span></pre>
                   <h4 className="text-lg font-medium mt-4">Response:</h4>
-                  <pre className="bg-gray-800 p-4 rounded-md text-sm relative">
-                    {`{
-  "user": {
-    "name": "John Doe",
-    "email": "john.doe@example.com"
-  },
-  "accessToken": "access-token-here",
-  "refreshToken": "refresh-token-here",
-  "message": "USER LOGGED IN SUCCESSFULLY"
-}`}
-                  <span className="absolute top-2 right-2 text-xl hover:cursor-pointer" onClick={(event) => copyCode(event)}><ion-icon name="clipboard-outline"></ion-icon></span></pre>
+                  <pre className="bg-gray-800 p-4 rounded-md text-sm text-left justify-start items-start relative transition-transform duration-300 ease-in-out hover:scale-105">
+                  {`    {
+          "user": {
+                "name": "John Doe",
+                "email": "john.doe@example.com"
+          },
+          "accessToken": "access-token-here",
+          "refreshToken": "refresh-token-here",
+          "message": "USER LOGGED IN SUCCESSFULLY"
+    }`}
+                  <span className="absolute top-2 right-2 text-xl hover:cursor-pointer transform transition duration-300 ease-in-out hover:scale-110" onClick={(event) => copyCode(event)}><ion-icon name="clipboard-outline"></ion-icon></span></pre>
                 </div>
                 <div>
                   <h3 className="text-lg font-medium">3. Logout User</h3>
@@ -161,11 +170,11 @@ export function InfoDocs() {
                     <code>Authorization: Bearer &lt;access-token&gt;</code>
                   </p>
                   <h4 className="text-lg font-medium mt-4">Response:</h4>
-                  <pre className="bg-gray-800 p-4 rounded-md text-sm relative">
-                    {`{
-  "message": "USER LOGGED OUT SUCCESSFULLY"
+                  <pre className="bg-gray-800 p-4 rounded-md text-sm text-left justify-start items-start relative transition-transform duration-300 ease-in-out hover:scale-105">
+                  {`{
+        "message": "USER LOGGED OUT SUCCESSFULLY"
 }`}
-                  <span className="absolute top-2 right-2 text-xl hover:cursor-pointer" onClick={(event) => copyCode(event)}><ion-icon name="clipboard-outline"></ion-icon></span></pre>
+                  <span className="absolute top-2 right-2 text-xl hover:cursor-pointer transform transition duration-300 ease-in-out hover:scale-110" onClick={(event) => copyCode(event)}><ion-icon name="clipboard-outline"></ion-icon></span></pre>
                 </div>
                 <div>
                   <h3 className="text-lg font-medium">
@@ -179,19 +188,19 @@ export function InfoDocs() {
                     token.
                   </p>
                   <h4 className="text-lg font-medium mt-4">Request Body:</h4>
-                  <pre className="bg-gray-800 p-4 rounded-md text-sm relative">
-                    {`{
-  "refreshToken": "refresh-token-here"
+                  <pre className="bg-gray-800 p-4 rounded-md text-sm text-left justify-start items-start relative transition-transform duration-300 ease-in-out hover:scale-105">
+                  {`{
+        "refreshToken": "refresh-token-here"
 }`}
-                  <span className="absolute top-2 right-2 text-xl hover:cursor-pointer" onClick={(event) => copyCode(event)}><ion-icon name="clipboard-outline"></ion-icon></span></pre>
+                  <span className="absolute top-2 right-2 text-xl hover:cursor-pointer transform transition duration-300 ease-in-out hover:scale-110" onClick={(event) => copyCode(event)}><ion-icon name="clipboard-outline"></ion-icon></span></pre>
                   <h4 className="text-lg font-medium mt-4">Response:</h4>
-                  <pre className="bg-gray-800 p-4 rounded-md text-sm relative">
-                    {`{
-  "accessToken": "new-access-token-here",
-  "refreshToken": "new-refresh-token-here",
-  "message": "ACCESS TOKEN REFRESHED SUCCESSFULLY!"
+                  <pre className="bg-gray-800 p-4 rounded-md text-sm text-left justify-start items-start relative transition-transform duration-300 ease-in-out hover:scale-105">
+                  {`{
+        "accessToken": "new-access-token-here",
+        "refreshToken": "new-refresh-token-here",
+        "message": "ACCESS TOKEN REFRESHED SUCCESSFULLY!"
 }`}
-                  <span className="absolute top-2 right-2 text-xl hover:cursor-pointer" onClick={(event) => copyCode(event)}><ion-icon name="clipboard-outline"></ion-icon></span></pre>
+                  <span className="absolute top-2 right-2 text-xl hover:cursor-pointer transform transition duration-300 ease-in-out hover:scale-110" onClick={(event) => copyCode(event)}><ion-icon name="clipboard-outline"></ion-icon></span></pre>
                 </div>
               </div>
             </section>
@@ -225,69 +234,29 @@ export function InfoDocs() {
       Additional filters can be added as query parameters (details below).
     </p>
     <h4 className="text-lg font-medium mt-4">Available Filters:</h4>
-    <ul className="mt-2 text-sm list-disc list-inside">
-      <li>Make Id</li>
-      <li>Make Name</li>
-      <li>Model Id</li>
-      <li>Model Name</li>
-      <li>Trim Id</li>
-      <li>Trim Year</li>
-      <li>Trim Name</li>
-      <li>Trim Description</li>
-      <li>Trim Msrp</li>
-      <li>Trim Invoice</li>
-      <li>Trim Created</li>
-      <li>Trim Modified</li>
-      <li>Engine Id</li>
-      <li>Engine Type</li>
-      <li>Engine Fuel Type</li>
-      <li>Engine Cylinders</li>
-      <li>Engine Size</li>
-      <li>Engine Horsepower Hp</li>
-      <li>Engine Horsepower Rpm</li>
-      <li>Engine Torque Ft Lbs</li>
-      <li>Engine Torque Rpm</li>
-      <li>Engine Valves</li>
-      <li>Engine Valve Timing</li>
-      <li>Engine Cam Type</li>
-      <li>Engine Drive Type</li>
-      <li>Engine Transmission</li>
-      <li>Body Id</li>
-      <li>Body Type</li>
-      <li>Body Doors</li>
-      <li>Body Seats</li>
-      <li>Body Length</li>
-      <li>Body Width</li>
-      <li>Body Height</li>
-      <li>Body Wheel Base</li>
-      <li>Body Front Track</li>
-      <li>Body Rear Track</li>
-      <li>Body Ground Clearance</li>
-      <li>Body Cargo Capacity</li>
-      <li>Body Max Cargo Capacity</li>
-      <li>Body Curb Weight</li>
-      <li>Body Gross Weight</li>
-      <li>Body Max Payload</li>
-      <li>Body Max Towing Capacity</li>
-      <li>Mileage Id</li>
-      <li>Mileage Fuel Tank Capacity</li>
-      <li>Mileage Combined Mpg</li>
-      <li>Mileage Epa City Mpg</li>
-      <li>Mileage Epa Highway Mpg</li>
-      <li>Mileage Range City</li>
-      <li>Mileage Range Highway</li>
-      <li>Mileage Epa Combined Mpg</li>
-      <li>Electric Mileage</li>
-      <li>Electric Mileage Epa City Mpg</li>
-      <li>Electric Mileage Epa Highway Mpg</li>
-      <li>Electric Mileage Range</li>
-      <li>Electric Mileage Epa Kwh 100 Mi</li>
-      <li>Electric Mileage Epa Time To Charge Hr 240v</li>
-      <li>Electric Mileage Battery Capacity</li>
-    </ul>
+    <ul className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+  {filterOptions.map((filter) => (
+    <li
+      key={filter}
+      className="animate-bounce relative group p-4 bg-gray-800 text-white rounded-lg shadow-md hover:bg-gray-700 transition duration-300 hover:cursor-pointer overflow-hidden"
+    >
+      <p className="text-base font-medium text-center break-words">{filter}</p>
+      {/* Hover div */}
+      <div className="absolute inset-0 z-10 transform translate-y-full group-hover:translate-y-0 transition-all duration-500 ease-out bg-gray-900 bg-opacity-95 text-white rounded-lg shadow-lg flex-col items-center justify-center p-2">
+        <h3 className="text-lg font-bold mb-2">Usage</h3>
+        <p className="text-sm text-gray-300 break-words">
+          {filter.split(' ').join('+')}=some-value
+        </p>
+      </div>
+    </li>
+  ))}
+</ul>
+
+
+
     <h4 className="text-lg font-medium mt-4">Example:</h4>
-    <pre className="bg-gray-800 p-4 rounded-md text-sm relative">
-      {`/api/cars?apiKey=your-api-key&Make+Name=Toyota&Trim+Year=2020`}
+    <pre className="bg-gray-800 p-4 rounded-md text-sm text-left justify-start items-start relative transition-transform duration-300 ease-in-out hover:scale-105">
+    {`/api/cars?apiKey=your-api-key&Make+Name=Toyota&Trim+Year=2020`}
       <span
         className="absolute top-2 right-2 text-xl hover:cursor-pointer"
         onClick={(event) => copyCode(event)}
@@ -296,23 +265,23 @@ export function InfoDocs() {
       </span>
     </pre>
     <h4 className="text-lg font-medium mt-4">Response:</h4>
-    <pre className="bg-gray-800 p-4 rounded-md text-sm relative">
-      {`{
-  "totalResults": 100,
-  "totalPages": 10,
-  "currentPage": 1,
-  "cars": [
-    {
-      "MakeId": "1",
-      "MakeName": "Toyota",
-      "ModelId": "1",
-      "ModelName": "Corolla",
-      "TrimName": "SE",
-      "TrimYear": "2020",
-      "TrimDescription": "Sporty compact sedan",
-      "TrimMsrp": "$25,000"
-    }
-  ]
+    <pre className="bg-gray-800 p-4 rounded-md text-sm text-left justify-start items-start relative transition-transform duration-300 ease-in-out hover:scale-105">
+    {`{
+        "totalResults": 100,
+        "totalPages": 10,
+        "currentPage": 1,
+        "cars": [
+              {
+                    "MakeId": "1",
+                    "MakeName": "Toyota",
+                    "ModelId": "1",
+                    "ModelName": "Corolla",
+                    "TrimName": "SE",
+                    "TrimYear": "2020",
+                    "TrimDescription": "Sporty compact sedan",
+                    "TrimMsrp": "$25,000"
+              }
+        ]
 }`}
       <span
         className="absolute top-2 right-2 text-xl hover:cursor-pointer"
@@ -368,23 +337,23 @@ export function InfoDocs() {
                 For all error responses, the API will return a JSON object with
                 a message describing the error. Example:
               </p>
-              <pre className="bg-gray-800 p-4 rounded-md text-sm relative">
+              <pre className="bg-gray-800 p-4 rounded-md text-sm text-left justify-start items-start relative transition-transform duration-300 ease-in-out hover:scale-105">
                 {`400 Bad Request:
 {
-  "message": "Please enter email and password."
+        "message": "Please enter email and password."
 }
 
 401 Unauthorized:
 {
-  "message": "UNAUTHORIZED REQUEST"
+        "message": "UNAUTHORIZED REQUEST"
 }
 
 500 Internal Server Error:
 {
-  "message": "Unexpected error occurred",
-  "error": "Error details here"
+        "message": "Unexpected error occurred",
+        "error": "Error details here"
 }`}
-              <span className="absolute top-2 right-2 text-xl hover:cursor-pointer" onClick={(event) => copyCode(event)}><ion-icon name="clipboard-outline"></ion-icon></span></pre>
+              <span className="absolute top-2 right-2 text-xl hover:cursor-pointer transform transition duration-300 ease-in-out hover:scale-110" onClick={(event) => copyCode(event)}><ion-icon name="clipboard-outline"></ion-icon></span></pre>
             </section>
 
             {/* Conclusion Section */}
@@ -404,17 +373,27 @@ export function InfoDocs() {
         </div>
       {/* Table of Contents Sidebar */}
       <div className="w-1/4 pt-40 bg-gray-800 lg:fixed lg:h-full xs:bottom-0 xs:left-0 xs:w-full cs:absolute right-0 overflow-y-auto">
-      <h2 className="text-xl font-bold text-[#FFD700] mb-4">Table of Contents</h2>
-        <ul className="space-y-2 text-sm">
-          <li><a href="#base-url" className="hover:text-[#FFD700]">Base URL</a></li>
-          <li><a href="#authentication" className="hover:text-[#FFD700]">Authentication & Authorization</a></li>
-          <li><a href="#user-api" className="hover:text-[#FFD700]">User API Endpoints</a></li>
-          <li><a href="#car-api" className="hover:text-[#FFD700]">Car API Endpoints</a></li>
-          <li><a href="#middleware" className="hover:text-[#FFD700]">Middleware & Authorization</a></li>
-          <li><a href="#rate-limiting" className="hover:text-[#FFD700]">Rate Limiting</a></li>
-          <li><a href="#error-responses" className="hover:text-[#FFD700]">Error Responses</a></li>
-          <li><a href="#conclusion" className="hover:text-[#FFD700]">Conclusion</a></li>
-        </ul>
+  <motion.h2
+    className="text-xl font-bold text-[#FFD700] mb-4"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 0.5, ease: "easeInOut" }}
+  >Table of Contents</motion.h2>
+        <motion.ul
+    className="space-y-2 text-sm"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 0.7, ease: "easeInOut" }}
+  >
+          <li><a href="#base-url" className="hover:text-[#FFD700] transition-all duration-300 ease-in-out transform hover:scale-105">Base URL</a></li>
+          <li><a href="#authentication" className="hover:text-[#FFD700] transition-all duration-300 ease-in-out transform hover:scale-105">Authentication & Authorization</a></li>
+          <li><a href="#user-api" className="hover:text-[#FFD700] transition-all duration-300 ease-in-out transform hover:scale-105">User API Endpoints</a></li>
+          <li><a href="#car-api" className="hover:text-[#FFD700] transition-all duration-300 ease-in-out transform hover:scale-105">Car API Endpoints</a></li>
+          <li><a href="#middleware" className="hover:text-[#FFD700] transition-all duration-300 ease-in-out transform hover:scale-105">Middleware & Authorization</a></li>
+          <li><a href="#rate-limiting" className="hover:text-[#FFD700] transition-all duration-300 ease-in-out transform hover:scale-105">Rate Limiting</a></li>
+          <li><a href="#error-responses" className="hover:text-[#FFD700] transition-all duration-300 ease-in-out transform hover:scale-105">Error Responses</a></li>
+          <li><a href="#conclusion" className="hover:text-[#FFD700] transition-all duration-300 ease-in-out transform hover:scale-105">Conclusion</a></li>
+        </motion.ul>
       </div>
       </div>
       </div>

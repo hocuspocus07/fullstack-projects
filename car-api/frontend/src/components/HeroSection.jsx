@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 function HeroSection() {
   const words = ["Fast", "Reliable", "Innovative"];
@@ -46,21 +47,36 @@ function HeroSection() {
   }, []);
 
   return (
-    <section className="h-screen w-screen flex flex-col justify-center items-start px-10 md:px-40 text-white">
-      <span className="text-4xl sm:text-5xl md:text-7xl mt-10 text-[#FFD700]">
+    <motion.section
+      className="h-screen w-screen flex flex-col justify-center items-start px-10 md:px-40 text-white"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1, ease: "easeInOut" }}
+    >
+      <motion.span
+        className="text-4xl sm:text-5xl md:text-7xl mt-10 text-[#FFD700]"
+        initial={{ x: -100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 1, delay: 0.3 }}
+      >
         VrooomAPI - {text}
         <span
           className={`ml-1 ${blink ? "opacity-100" : "opacity-0"} text-white`}
         >
           |
         </span>
-      </span>
-      <p className="mt-5 sm:mt-8 md:mt-10 text-sm sm:text-lg md:text-xl max-w-xl sm:max-w-2xl">
+      </motion.span>
+      <motion.p
+        className="mt-5 sm:mt-8 md:mt-10 text-sm sm:text-lg md:text-xl max-w-xl sm:max-w-2xl"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.6 }}
+      >
         Revolutionize your driving experience with our cutting-edge car API
         solutions. Seamless integration, instant access—start developing right
         after signing up and unlock your API key today!
-      </p>
-    </section>
+      </motion.p>
+    </motion.section>
   );
 }
 

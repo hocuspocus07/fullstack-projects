@@ -23,7 +23,7 @@ const Register = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-custom-bg bg-cover bg-center">
-  <div className="w-full max-w-md p-6 bg-white bg-opacity-10 backdrop-blur-lg rounded-lg shadow-lg xs:w-full sm:w-96">
+  <div className="w-full max-w-md p-6 bg-white bg-opacity-10 backdrop-blur-lg rounded-lg shadow-lg xs:w-full sm:w-96 animate-float">
     <h2 className="text-2xl font-bold text-center text-transparent text-white xs:text-xl sm:text-2xl">
       REGISTER
     </h2>

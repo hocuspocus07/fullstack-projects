@@ -34,7 +34,7 @@ function Features() {
         <Row xs={1} sm={2} md={2} lg={4} className="g-6">
           {cardsData.map((card, idx) => (
             <Col key={idx} className="d-flex justify-content-center">
-              <Card className="h-full w-full bg-transparent border-none hover:scale-105 transform transition-all duration-300">
+              <Card className="h-full w-full bg-transparent border-none hover:scale-105 transform transition-all duration-300 animate-bounce">
                 <div className="relative h-60">
                   <Card.Img
                     variant="top"
