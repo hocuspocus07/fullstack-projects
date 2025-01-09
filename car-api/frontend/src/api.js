@@ -27,5 +27,5 @@ export const refreshAccessToken = (refreshToken) => {
 
 //contact form 
 export const contactUs=(userData)=>{
-  return api.post('/contact', {userData});
+  return api.post('/contact', userData);
 }

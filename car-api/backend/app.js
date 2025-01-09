@@ -13,10 +13,18 @@ dotenv.config({
 
 const app = express()
 
+const allowedOrigins = (process.env.CORS_ORIGIN || '').split(',');
+
 app.use(cors({
-  origin:process.env.CORS_ORIGIN || 'https://localhost:5173',
-    credentials: true,
-  }));
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+}));
   
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
@@ -35,6 +43,8 @@ const apiLimiter = rateLimit({
         return myApiKey.includes(apiKey);
     },
 });
+
+app.options('*', cors()); // Handle preflight requests
 
 app.use('/api/contact',contactRouter);
 app.use('/api/users', userRouter);
